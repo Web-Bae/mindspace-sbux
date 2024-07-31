@@ -16,7 +16,7 @@ name: Auto Increment Version
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   create-tag:
