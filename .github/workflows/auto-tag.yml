@@ -38,7 +38,7 @@ jobs:
           git config --global user.email 'action@github.com'
           git add .version
           git commit -m "Increment version to ${{ env.NEW_VERSION }}"
-          git push origin main
+          git push origin master
 
       - name: Tag New Version and Push Tag
         run: |
