@@ -4,6 +4,12 @@ This codebase houses the xAPI code for Mindspace - SBUX project.
 
 It is hosted via jsdelivr CDN and is used in the Webflow project.
 
+## Development
+
+The code uses a SCORM cloud app for testing. The code expects query parameters of `appId` and `key` in the URL to be able to connect to the SCORM cloud app. Ask the developer for the correct appId and key.
+
+## Creating a new version
+
 The auto-tag.yml file auto-increments the version number and creates an associated tag. Use this tag in github releases to create a new release.
 
 # Finsweet Developer Starter Template Docs
