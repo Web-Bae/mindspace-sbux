@@ -1,4 +1,12 @@
-# Finsweet Developer Starter
+# Mindspace - SBUX Codebase
+
+This codebase houses the xAPI code for Mindspace - SBUX project.
+
+It is hosted via jsdelivr CDN and is used in the Webflow project.
+
+The auto-tag.yml file auto-increments the version number and creates an associated tag. Use this tag in github releases to create a new release.
+
+# Finsweet Developer Starter Template Docs
 
 A starter template for both Client & Power projects.
 
