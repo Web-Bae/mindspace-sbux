@@ -10,7 +10,7 @@ The code uses a SCORM cloud app for testing. The code expects query parameters o
 
 ## Creating a new version
 
-The auto-tag.yml file auto-increments the version number and creates an associated tag. Use this tag in github releases to create a new release.
+The `auto-tag.yml` file auto-increments the version number and creates an associated tag. Use this tag in github releases to create a new release.
 
 # Finsweet Developer Starter Template Docs
 

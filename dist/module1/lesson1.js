@@ -1161,8 +1161,52 @@
   // src/utils/xapiUtiils.ts
   init_live_reload();
   var import_xapi = __toESM(require_XAPI_umd(), 1);
+
+  // src/utils/attributes.ts
+  init_live_reload();
+  var ATTRIBUTES = {
+    ACTIONS: {
+      NAME: "xapi-action",
+      VALUES: {
+        MODULE_COMPLETE: "module-completed",
+        LESSON_COMPLETE: "lesson-completed"
+      }
+    }
+  };
+
+  // src/utils/getModuleLessonKey.ts
+  init_live_reload();
+  var getModuleLessonKey = () => {
+    const url = new URL(window.location.href);
+    const pathname = url.pathname.substring(1);
+    return pathname;
+  };
+
+  // src/utils/initialState.ts
+  init_live_reload();
+  var initialState = {
+    content: {
+      "module-1-lesson-1": {
+        completed: false,
+        started: false
+      },
+      "module-1-lesson-2": {
+        completed: false,
+        started: false
+      },
+      "module-2-lesson-1": {
+        completed: false,
+        started: false
+      }
+    }
+  };
+
+  // src/utils/xapiUtiils.ts
   var xapi;
-  var initializeXAPI = () => {
+  var agent;
+  var activityId = "https://example.com/activities/test-activity4";
+  var stateId = `${activityId}/states/myStateId4`;
+  var initializeXAPI = async () => {
     const urlParams = new URLSearchParams(window.location.search);
     const appId = urlParams.get("appId");
     const secretKey = urlParams.get("key");
@@ -1179,7 +1223,51 @@
       endpoint,
       auth
     });
-    console.log("xapi initialized", xapi);
+    const about = await xapi.getAbout();
+    console.log("xapi initialized");
+    console.log({ about });
+    await initializeState();
+  };
+  var initializeState = async () => {
+    console.log("initializeState");
+    agent = {
+      objectType: "Agent",
+      name: "<name>",
+      mbox: "mailto:testagent2@test.com"
+    };
+    try {
+      const retrievedState = await xapi.getState({
+        agent,
+        activityId,
+        stateId
+      });
+      if (retrievedState.data) {
+        console.log("state already exists");
+        console.log({ retrievedState });
+        return;
+      }
+    } catch (error) {
+      console.log("Error retrieving state:", error);
+      const err = error;
+      if (err.response && err.response.status === 404) {
+        console.log("State not found, proceeding to create a new state");
+      } else {
+        console.error("Error retrieving state:", error);
+        return;
+      }
+    }
+    try {
+      const createdState = await xapi.createState({
+        agent,
+        activityId,
+        stateId,
+        state: { ...initialState }
+      });
+      console.log("state initialized");
+      console.log({ createdState });
+    } catch (error) {
+      console.error("Error creating state:", error);
+    }
   };
   var sendStatement = async (statement) => {
     try {
@@ -1189,38 +1277,90 @@
       console.error("Error sending statement:", error);
     }
   };
-  var startLesson = async (moduleId, lessonId) => {
-    const lessonName = `Module ${moduleId}: Lesson ${lessonId}`;
+  var startLesson = async () => {
+    console.log("startLesson");
+    const lessonKey = getModuleLessonKey();
+    const retrievedState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ retrievedState });
+    const started = retrievedState.data.content[lessonKey]?.started;
+    console.log({ started });
+    if (started) {
+      console.log("Lesson already started");
+      return;
+    }
+    retrievedState.data.content[lessonKey].started = true;
+    try {
+      await xapi.setState({
+        agent,
+        activityId,
+        stateId,
+        state: { ...retrievedState.data }
+      });
+      console.log("State updated successfully");
+    } catch (error) {
+      console.error("Error updating state:", error);
+      return;
+    }
     const statement = {
-      actor: {
-        name: "Test User",
-        mbox: "mailto:anonymous@example.com"
-      },
+      actor: agent,
       verb: {
-        id: "http://adlnet.gov/expapi/verbs/initialized",
+        id: "http://adlnet.gov/expapi/verbs/launched",
         display: {
-          "en-US": "initialized"
+          "en-US": "launched"
         }
       },
       object: {
-        id: `http://example.com/activities/${moduleId}-${lessonId}`,
+        id: `http://example.com/activities/${lessonKey}`,
         definition: {
           name: {
-            "en-US": lessonName
+            "en-US": lessonKey
           }
         }
       },
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     };
     await sendStatement(statement);
+    const newState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ newState });
   };
-  var completeLesson = async (moduleId, lessonId) => {
-    const lessonName = `Module ${moduleId}: Lesson ${lessonId}`;
+  var completeLesson = async () => {
+    console.log("completeLesson");
+    const lessonKey = getModuleLessonKey();
+    const retrievedState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ retrievedState });
+    const completed = retrievedState.data.content[lessonKey]?.completed;
+    console.log({ completed });
+    if (completed) {
+      console.log("Lesson already completed");
+      return;
+    }
+    retrievedState.data.content[lessonKey].completed = true;
+    try {
+      await xapi.setState({
+        agent,
+        activityId,
+        stateId,
+        state: { ...retrievedState.data }
+      });
+      console.log("State updated successfully");
+    } catch (error) {
+      console.error("Error updating state:", error);
+      return;
+    }
     const statement = {
-      actor: {
-        name: "Test User",
-        mbox: "mailto:anonymous@example.com"
-      },
+      actor: agent,
       verb: {
         id: "http://adlnet.gov/expapi/verbs/completed",
         display: {
@@ -1228,33 +1368,32 @@
         }
       },
       object: {
-        id: `http://example.com/activities/${moduleId}-${lessonId}`,
+        id: `http://example.com/activities/${lessonKey}`,
         definition: {
           name: {
-            "en-US": lessonName
+            "en-US": lessonKey
           }
         }
       },
       timestamp: (/* @__PURE__ */ new Date()).toISOString()
     };
     await sendStatement(statement);
+    const newState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ newState });
   };
-
-  // src/module1/lesson1.ts
-  document.addEventListener("DOMContentLoaded", init);
-  async function init() {
-    const MODULE = 1;
-    const LESSON = 1;
-    initializeXAPI();
-    await startLesson(MODULE, LESSON);
-    const xapiActionItems = document.querySelectorAll("[xapi-action]");
+  var setupxapiActions = async () => {
+    const xapiActionItems = document.querySelectorAll(`[${ATTRIBUTES.ACTIONS.NAME}]`);
     xapiActionItems.forEach((item) => {
       item.addEventListener("click", async (event) => {
         event.preventDefault();
-        const action = item.getAttribute("xapi-action");
+        const action = item.getAttribute(ATTRIBUTES.ACTIONS.NAME);
         switch (action) {
-          case "lesson-completed":
-            await completeLesson(MODULE, LESSON);
+          case ATTRIBUTES.ACTIONS.VALUES.LESSON_COMPLETE:
+            await completeLesson();
             const href = event.target instanceof HTMLAnchorElement ? event.target.href : "";
             window.location.href = href;
             break;
@@ -1263,6 +1402,14 @@
         }
       });
     });
+  };
+
+  // src/module1/lesson1.ts
+  document.addEventListener("DOMContentLoaded", init);
+  async function init() {
+    await initializeXAPI();
+    await setupxapiActions();
+    await startLesson();
   }
 })();
 //# sourceMappingURL=lesson1.js.map
