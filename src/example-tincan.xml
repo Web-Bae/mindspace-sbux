@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tincan xmlns="http://projecttincan.com/tincan.xsd">
+    <!-- Define the root activity with a launch link -->
+    <activities>
+        <activity id="http://starbucks.com/starbucks-brand-training" type="http://adlnet.gov/expapi/activities/course">
+            <name lang="en-US">Starbucks Brand Training</name>
+            <description lang="en-US">Comprehensive training on Starbucks brand standards and procedures.</description>
+            <!-- Only one activity in the package should have a launch element -->
+        </activity>
+        <!-- Additional activity definitions without launch links -->
+        <activity id="http://starbucks.com/starbucks-brand-training/module1" type="http://adlnet.gov/expapi/activities/module">
+            <name lang="en-US">Module 1: Content</name>
+            <description lang="en-US">Module 1 includes introductory content and lessons on Starbucks procedures.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module1-lesson1" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 1: Lesson 1</name>
+            <description lang="en-US">Introduction to Starbucks' coffee origins.</description>
+            <launch>module-1-lesson-1.html</launch>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module1-lesson2" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 1: Lesson 2</name>
+            <description lang="en-US">Overview of coffee bean processing.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module1-lesson3" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 1: Lesson 3</name>
+            <description lang="en-US">Detailed exploration of brewing techniques.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module1-lesson4" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 1: Lesson 4</name>
+            <description lang="en-US">Customer service fundamentals.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module1-knowledgecheck" type="http://adlnet.gov/expapi/activities/assessment">
+            <name lang="en-US">Module 1: Knowledge Check</name>
+            <description lang="en-US">Assessment covering material from Module 1.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module2" type="http://adlnet.gov/expapi/activities/module">
+            <name lang="en-US">Module 2: Content</name>
+            <description lang="en-US">Module 2 focuses on advanced barista training and customer interactions.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module2-lesson1" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 2: Lesson 1</name>
+            <description lang="en-US">Advanced espresso machine operation.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module2-lesson2" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 2: Lesson 2</name>
+            <description lang="en-US">Creating signature Starbucks beverages.</description>
+        </activity>
+        <activity id="http://starbucks.com/starbucks-brand-training/module2-lesson3" type="http://adlnet.gov/expapi/activities/lesson">
+            <name lang="en-US">Module 2: Lesson 3</name>
+            <description lang="en-US">Handling difficult customer situations.</description>
+        </activity>
+    </activities>
+</tincan>
