@@ -1,7 +1,1347 @@
-"use strict";(()=>{var qe=Object.create;var mt=Object.defineProperty;var Ue=Object.getOwnPropertyDescriptor;var je=Object.getOwnPropertyNames;var Be=Object.getPrototypeOf,De=Object.prototype.hasOwnProperty;var _e=(m,g,w)=>g in m?mt(m,g,{enumerable:!0,configurable:!0,writable:!0,value:w}):m[g]=w;var Fe=(m,g)=>()=>(g||m((g={exports:{}}).exports,g),g.exports);var ke=(m,g,w,x)=>{if(g&&typeof g=="object"||typeof g=="function")for(let I of je(g))!De.call(m,I)&&I!==w&&mt(m,I,{get:()=>g[I],enumerable:!(x=Ue(g,I))||x.enumerable});return m};var Me=(m,g,w)=>(w=m!=null?qe(Be(m)):{},ke(g||!m||!m.__esModule?mt(w,"default",{value:m,enumerable:!0}):w,m));var v=(m,g,w)=>(_e(m,typeof g!="symbol"?g+"":g,w),w);var ne=Fe((gt,yt)=>{(function(m,g){typeof gt=="object"&&typeof yt<"u"?yt.exports=g():typeof define=="function"&&define.amd?define(g):(m=typeof globalThis<"u"?globalThis:m||self).XAPI=g()})(gt,function(){"use strict";function m(t,e){return function(){return t.apply(e,arguments)}}let{toString:g}=Object.prototype,{getPrototypeOf:w}=Object,x=(I=Object.create(null),t=>{let e=g.call(t);return I[e]||(I[e]=e.slice(8,-1).toLowerCase())});var I;let P=t=>(t=t.toLowerCase(),e=>x(e)===t),k=t=>e=>typeof e===t,{isArray:B}=Array,H=k("undefined"),St=P("ArrayBuffer"),ie=k("string"),C=k("function"),bt=k("number"),G=t=>t!==null&&typeof t=="object",W=t=>{if(x(t)!=="object")return!1;let e=w(t);return!(e!==null&&e!==Object.prototype&&Object.getPrototypeOf(e)!==null||Symbol.toStringTag in t||Symbol.iterator in t)},ce=P("Date"),ue=P("File"),le=P("Blob"),de=P("FileList"),pe=P("URLSearchParams");function z(t,e,{allOwnKeys:n=!1}={}){if(t==null)return;let r,o;if(typeof t!="object"&&(t=[t]),B(t))for(r=0,o=t.length;r<o;r++)e.call(null,t[r],r,t);else{let s=n?Object.getOwnPropertyNames(t):Object.keys(t),a=s.length,u;for(r=0;r<a;r++)u=s[r],e.call(null,t[u],u,t)}}function Tt(t,e){e=e.toLowerCase();let n=Object.keys(t),r,o=n.length;for(;o-- >0;)if(r=n[o],e===r.toLowerCase())return r;return null}let Ot=typeof globalThis<"u"?globalThis:typeof self<"u"?self:typeof window<"u"?window:global,vt=t=>!H(t)&&t!==Ot,fe=(et=typeof Uint8Array<"u"&&w(Uint8Array),t=>et&&t instanceof et);var et;let he=P("HTMLFormElement"),wt=(({hasOwnProperty:t})=>(e,n)=>t.call(e,n))(Object.prototype),me=P("RegExp"),At=(t,e)=>{let n=Object.getOwnPropertyDescriptors(t),r={};z(n,(o,s)=>{let a;(a=e(o,s,t))!==!1&&(r[s]=a||o)}),Object.defineProperties(t,r)},nt="abcdefghijklmnopqrstuvwxyz",Rt="0123456789",Pt={DIGIT:Rt,ALPHA:nt,ALPHA_DIGIT:nt+nt.toUpperCase()+Rt},ge=P("AsyncFunction");var i={isArray:B,isArrayBuffer:St,isBuffer:function(t){return t!==null&&!H(t)&&t.constructor!==null&&!H(t.constructor)&&C(t.constructor.isBuffer)&&t.constructor.isBuffer(t)},isFormData:t=>{let e;return t&&(typeof FormData=="function"&&t instanceof FormData||C(t.append)&&((e=x(t))==="formdata"||e==="object"&&C(t.toString)&&t.toString()==="[object FormData]"))},isArrayBufferView:function(t){let e;return e=typeof ArrayBuffer<"u"&&ArrayBuffer.isView?ArrayBuffer.isView(t):t&&t.buffer&&St(t.buffer),e},isString:ie,isNumber:bt,isBoolean:t=>t===!0||t===!1,isObject:G,isPlainObject:W,isUndefined:H,isDate:ce,isFile:ue,isBlob:le,isRegExp:me,isFunction:C,isStream:t=>G(t)&&C(t.pipe),isURLSearchParams:pe,isTypedArray:fe,isFileList:de,forEach:z,merge:function t(){let{caseless:e}=vt(this)&&this||{},n={},r=(o,s)=>{let a=e&&Tt(n,s)||s;W(n[a])&&W(o)?n[a]=t(n[a],o):W(o)?n[a]=t({},o):B(o)?n[a]=o.slice():n[a]=o};for(let o=0,s=arguments.length;o<s;o++)arguments[o]&&z(arguments[o],r);return n},extend:(t,e,n,{allOwnKeys:r}={})=>(z(e,(o,s)=>{n&&C(o)?t[s]=m(o,n):t[s]=o},{allOwnKeys:r}),t),trim:t=>t.trim?t.trim():t.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,""),stripBOM:t=>(t.charCodeAt(0)===65279&&(t=t.slice(1)),t),inherits:(t,e,n,r)=>{t.prototype=Object.create(e.prototype,r),t.prototype.constructor=t,Object.defineProperty(t,"super",{value:e.prototype}),n&&Object.assign(t.prototype,n)},toFlatObject:(t,e,n,r)=>{let o,s,a,u={};if(e=e||{},t==null)return e;do{for(o=Object.getOwnPropertyNames(t),s=o.length;s-- >0;)a=o[s],r&&!r(a,t,e)||u[a]||(e[a]=t[a],u[a]=!0);t=n!==!1&&w(t)}while(t&&(!n||n(t,e))&&t!==Object.prototype);return e},kindOf:x,kindOfTest:P,endsWith:(t,e,n)=>{t=String(t),(n===void 0||n>t.length)&&(n=t.length),n-=e.length;let r=t.indexOf(e,n);return r!==-1&&r===n},toArray:t=>{if(!t)return null;if(B(t))return t;let e=t.length;if(!bt(e))return null;let n=new Array(e);for(;e-- >0;)n[e]=t[e];return n},forEachEntry:(t,e)=>{let n=(t&&t[Symbol.iterator]).call(t),r;for(;(r=n.next())&&!r.done;){let o=r.value;e.call(t,o[0],o[1])}},matchAll:(t,e)=>{let n,r=[];for(;(n=t.exec(e))!==null;)r.push(n);return r},isHTMLForm:he,hasOwnProperty:wt,hasOwnProp:wt,reduceDescriptors:At,freezeMethods:t=>{At(t,(e,n)=>{if(C(t)&&["arguments","caller","callee"].indexOf(n)!==-1)return!1;let r=t[n];C(r)&&(e.enumerable=!1,"writable"in e?e.writable=!1:e.set||(e.set=()=>{throw Error("Can not rewrite read-only method '"+n+"'")}))})},toObjectSet:(t,e)=>{let n={},r=o=>{o.forEach(s=>{n[s]=!0})};return B(t)?r(t):r(String(t).split(e)),n},toCamelCase:t=>t.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g,function(e,n,r){return n.toUpperCase()+r}),noop:()=>{},toFiniteNumber:(t,e)=>(t=+t,Number.isFinite(t)?t:e),findKey:Tt,global:Ot,isContextDefined:vt,ALPHABET:Pt,generateString:(t=16,e=Pt.ALPHA_DIGIT)=>{let n="",{length:r}=e;for(;t--;)n+=e[Math.random()*r|0];return n},isSpecCompliantForm:function(t){return!!(t&&C(t.append)&&t[Symbol.toStringTag]==="FormData"&&t[Symbol.iterator])},toJSONObject:t=>{let e=new Array(10),n=(r,o)=>{if(G(r)){if(e.indexOf(r)>=0)return;if(!("toJSON"in r)){e[o]=r;let s=B(r)?[]:{};return z(r,(a,u)=>{let d=n(a,o+1);!H(d)&&(s[u]=d)}),e[o]=void 0,s}}return r};return n(t,0)},isAsyncFn:ge,isThenable:t=>t&&(G(t)||C(t))&&C(t.then)&&C(t.catch)};function E(t,e,n,r,o){Error.call(this),Error.captureStackTrace?Error.captureStackTrace(this,this.constructor):this.stack=new Error().stack,this.message=t,this.name="AxiosError",e&&(this.code=e),n&&(this.config=n),r&&(this.request=r),o&&(this.response=o)}i.inherits(E,Error,{toJSON:function(){return{message:this.message,name:this.name,description:this.description,number:this.number,fileName:this.fileName,lineNumber:this.lineNumber,columnNumber:this.columnNumber,stack:this.stack,config:i.toJSONObject(this.config),code:this.code,status:this.response&&this.response.status?this.response.status:null}}});let It=E.prototype,Ct={};["ERR_BAD_OPTION_VALUE","ERR_BAD_OPTION","ECONNABORTED","ETIMEDOUT","ERR_NETWORK","ERR_FR_TOO_MANY_REDIRECTS","ERR_DEPRECATED","ERR_BAD_RESPONSE","ERR_BAD_REQUEST","ERR_CANCELED","ERR_NOT_SUPPORT","ERR_INVALID_URL"].forEach(t=>{Ct[t]={value:t}}),Object.defineProperties(E,Ct),Object.defineProperty(It,"isAxiosError",{value:!0}),E.from=(t,e,n,r,o,s)=>{let a=Object.create(It);return i.toFlatObject(t,a,function(u){return u!==Error.prototype},u=>u!=="isAxiosError"),E.call(a,t.message,e,n,r,o),a.cause=t,a.name=t.name,s&&Object.assign(a,s),a};function rt(t){return i.isPlainObject(t)||i.isArray(t)}function xt(t){return i.endsWith(t,"[]")?t.slice(0,-2):t}function Nt(t,e,n){return t?t.concat(e).map(function(r,o){return r=xt(r),!n&&o?"["+r+"]":r}).join(n?".":""):e}let ye=i.toFlatObject(i,{},null,function(t){return/^is[A-Z]/.test(t)});function X(t,e,n){if(!i.isObject(t))throw new TypeError("target must be an object");e=e||new FormData;let r=(n=i.toFlatObject(n,{metaTokens:!0,dots:!1,indexes:!1},!1,function(f,y){return!i.isUndefined(y[f])})).metaTokens,o=n.visitor||l,s=n.dots,a=n.indexes,u=(n.Blob||typeof Blob<"u"&&Blob)&&i.isSpecCompliantForm(e);if(!i.isFunction(o))throw new TypeError("visitor must be a function");function d(f){if(f===null)return"";if(i.isDate(f))return f.toISOString();if(!u&&i.isBlob(f))throw new E("Blob is not supported. Use a Buffer instead.");return i.isArrayBuffer(f)||i.isTypedArray(f)?u&&typeof Blob=="function"?new Blob([f]):Buffer.from(f):f}function l(f,y,p){let b=f;if(f&&!p&&typeof f=="object"){if(i.endsWith(y,"{}"))y=r?y:y.slice(0,-2),f=JSON.stringify(f);else if(i.isArray(f)&&function(A){return i.isArray(A)&&!A.some(rt)}(f)||(i.isFileList(f)||i.endsWith(y,"[]"))&&(b=i.toArray(f)))return y=xt(y),b.forEach(function(A,L){!i.isUndefined(A)&&A!==null&&e.append(a===!0?Nt([y],L,s):a===null?y:y+"[]",d(A))}),!1}return!!rt(f)||(e.append(Nt(p,y,s),d(f)),!1)}let c=[],h=Object.assign(ye,{defaultVisitor:l,convertValue:d,isVisitable:rt});if(!i.isObject(t))throw new TypeError("data must be an object");return function f(y,p){if(!i.isUndefined(y)){if(c.indexOf(y)!==-1)throw Error("Circular reference detected in "+p.join("."));c.push(y),i.forEach(y,function(b,A){(!(i.isUndefined(b)||b===null)&&o.call(e,b,i.isString(A)?A.trim():A,p,h))===!0&&f(b,p?p.concat(A):[A])}),c.pop()}}(t),e}function Lt(t){let e={"!":"%21","'":"%27","(":"%28",")":"%29","~":"%7E","%20":"+","%00":"\0"};return encodeURIComponent(t).replace(/[!'()~]|%20|%00/g,function(n){return e[n]})}function ot(t,e){this._pairs=[],t&&X(t,this,e)}let qt=ot.prototype;function Ee(t){return encodeURIComponent(t).replace(/%3A/gi,":").replace(/%24/g,"$").replace(/%2C/gi,",").replace(/%20/g,"+").replace(/%5B/gi,"[").replace(/%5D/gi,"]")}function Ut(t,e,n){if(!e)return t;let r=n&&n.encode||Ee,o=n&&n.serialize,s;if(s=o?o(e,n):i.isURLSearchParams(e)?e.toString():new ot(e,n).toString(r),s){let a=t.indexOf("#");a!==-1&&(t=t.slice(0,a)),t+=(t.indexOf("?")===-1?"?":"&")+s}return t}qt.append=function(t,e){this._pairs.push([t,e])},qt.toString=function(t){let e=t?function(n){return t.call(this,n,Lt)}:Lt;return this._pairs.map(function(n){return e(n[0])+"="+e(n[1])},"").join("&")};class jt{constructor(){this.handlers=[]}use(e,n,r){return this.handlers.push({fulfilled:e,rejected:n,synchronous:!!r&&r.synchronous,runWhen:r?r.runWhen:null}),this.handlers.length-1}eject(e){this.handlers[e]&&(this.handlers[e]=null)}clear(){this.handlers&&(this.handlers=[])}forEach(e){i.forEach(this.handlers,function(n){n!==null&&e(n)})}}var Bt={silentJSONParsing:!0,forcedJSONParsing:!0,clarifyTimeoutError:!1},Se={isBrowser:!0,classes:{URLSearchParams:typeof URLSearchParams<"u"?URLSearchParams:ot,FormData:typeof FormData<"u"?FormData:null,Blob:typeof Blob<"u"?Blob:null},protocols:["http","https","file","blob","url","data"]};let Dt=typeof window<"u"&&typeof document<"u",be=(_t=typeof navigator<"u"&&navigator.product,Dt&&["ReactNative","NativeScript","NS"].indexOf(_t)<0);var _t;let Te=typeof WorkerGlobalScope<"u"&&self instanceof WorkerGlobalScope&&typeof self.importScripts=="function";var q={...Object.freeze({__proto__:null,hasBrowserEnv:Dt,hasStandardBrowserEnv:be,hasStandardBrowserWebWorkerEnv:Te}),...Se};function Ft(t){function e(n,r,o,s){let a=n[s++];if(a==="__proto__")return!0;let u=Number.isFinite(+a),d=s>=n.length;return a=!a&&i.isArray(o)?o.length:a,d?(i.hasOwnProp(o,a)?o[a]=[o[a],r]:o[a]=r,!u):(o[a]&&i.isObject(o[a])||(o[a]=[]),e(n,r,o[a],s)&&i.isArray(o[a])&&(o[a]=function(l){let c={},h=Object.keys(l),f,y=h.length,p;for(f=0;f<y;f++)p=h[f],c[p]=l[p];return c}(o[a])),!u)}if(i.isFormData(t)&&i.isFunction(t.entries)){let n={};return i.forEachEntry(t,(r,o)=>{e(function(s){return i.matchAll(/\w+|\[(\w*)]/g,s).map(a=>a[0]==="[]"?"":a[1]||a[0])}(r),o,n,0)}),n}return null}let st={transitional:Bt,adapter:["xhr","http"],transformRequest:[function(t,e){let n=e.getContentType()||"",r=n.indexOf("application/json")>-1,o=i.isObject(t);if(o&&i.isHTMLForm(t)&&(t=new FormData(t)),i.isFormData(t))return r?JSON.stringify(Ft(t)):t;if(i.isArrayBuffer(t)||i.isBuffer(t)||i.isStream(t)||i.isFile(t)||i.isBlob(t))return t;if(i.isArrayBufferView(t))return t.buffer;if(i.isURLSearchParams(t))return e.setContentType("application/x-www-form-urlencoded;charset=utf-8",!1),t.toString();let s;if(o){if(n.indexOf("application/x-www-form-urlencoded")>-1)return function(a,u){return X(a,new q.classes.URLSearchParams,Object.assign({visitor:function(d,l,c,h){return q.isNode&&i.isBuffer(d)?(this.append(l,d.toString("base64")),!1):h.defaultVisitor.apply(this,arguments)}},u))}(t,this.formSerializer).toString();if((s=i.isFileList(t))||n.indexOf("multipart/form-data")>-1){let a=this.env&&this.env.FormData;return X(s?{"files[]":t}:t,a&&new a,this.formSerializer)}}return o||r?(e.setContentType("application/json",!1),function(a,u,d){if(i.isString(a))try{return(u||JSON.parse)(a),i.trim(a)}catch(l){if(l.name!=="SyntaxError")throw l}return(d||JSON.stringify)(a)}(t)):t}],transformResponse:[function(t){let e=this.transitional||st.transitional,n=e&&e.forcedJSONParsing,r=this.responseType==="json";if(t&&i.isString(t)&&(n&&!this.responseType||r)){let o=!(e&&e.silentJSONParsing)&&r;try{return JSON.parse(t)}catch(s){if(o)throw s.name==="SyntaxError"?E.from(s,E.ERR_BAD_RESPONSE,this,null,this.response):s}}return t}],timeout:0,xsrfCookieName:"XSRF-TOKEN",xsrfHeaderName:"X-XSRF-TOKEN",maxContentLength:-1,maxBodyLength:-1,env:{FormData:q.classes.FormData,Blob:q.classes.Blob},validateStatus:function(t){return t>=200&&t<300},headers:{common:{Accept:"application/json, text/plain, */*","Content-Type":void 0}}};i.forEach(["delete","get","head","post","put","patch"],t=>{st.headers[t]={}});var at=st;let Oe=i.toObjectSet(["age","authorization","content-length","content-type","etag","expires","from","host","if-modified-since","if-unmodified-since","last-modified","location","max-forwards","proxy-authorization","referer","retry-after","user-agent"]),kt=Symbol("internals");function V(t){return t&&String(t).trim().toLowerCase()}function Y(t){return t===!1||t==null?t:i.isArray(t)?t.map(Y):String(t)}function it(t,e,n,r,o){return i.isFunction(r)?r.call(this,e,n):(o&&(e=n),i.isString(e)?i.isString(r)?e.indexOf(r)!==-1:i.isRegExp(r)?r.test(e):void 0:void 0)}class Z{constructor(e){e&&this.set(e)}set(e,n,r){let o=this;function s(u,d,l){let c=V(d);if(!c)throw new Error("header name must be a non-empty string");let h=i.findKey(o,c);(!h||o[h]===void 0||l===!0||l===void 0&&o[h]!==!1)&&(o[h||d]=Y(u))}let a=(u,d)=>i.forEach(u,(l,c)=>s(l,c,d));return i.isPlainObject(e)||e instanceof this.constructor?a(e,n):i.isString(e)&&(e=e.trim())&&!/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(e.trim())?a((u=>{let d={},l,c,h;return u&&u.split(`
-`).forEach(function(f){h=f.indexOf(":"),l=f.substring(0,h).trim().toLowerCase(),c=f.substring(h+1).trim(),!l||d[l]&&Oe[l]||(l==="set-cookie"?d[l]?d[l].push(c):d[l]=[c]:d[l]=d[l]?d[l]+", "+c:c)}),d})(e),n):e!=null&&s(n,e,r),this}get(e,n){if(e=V(e)){let r=i.findKey(this,e);if(r){let o=this[r];if(!n)return o;if(n===!0)return function(s){let a=Object.create(null),u=/([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g,d;for(;d=u.exec(s);)a[d[1]]=d[2];return a}(o);if(i.isFunction(n))return n.call(this,o,r);if(i.isRegExp(n))return n.exec(o);throw new TypeError("parser must be boolean|regexp|function")}}}has(e,n){if(e=V(e)){let r=i.findKey(this,e);return!(!r||this[r]===void 0||n&&!it(0,this[r],r,n))}return!1}delete(e,n){let r=this,o=!1;function s(a){if(a=V(a)){let u=i.findKey(r,a);!u||n&&!it(0,r[u],u,n)||(delete r[u],o=!0)}}return i.isArray(e)?e.forEach(s):s(e),o}clear(e){let n=Object.keys(this),r=n.length,o=!1;for(;r--;){let s=n[r];e&&!it(0,this[s],s,e,!0)||(delete this[s],o=!0)}return o}normalize(e){let n=this,r={};return i.forEach(this,(o,s)=>{let a=i.findKey(r,s);if(a)return n[a]=Y(o),void delete n[s];let u=e?function(d){return d.trim().toLowerCase().replace(/([a-z\d])(\w*)/g,(l,c,h)=>c.toUpperCase()+h)}(s):String(s).trim();u!==s&&delete n[s],n[u]=Y(o),r[u]=!0}),this}concat(...e){return this.constructor.concat(this,...e)}toJSON(e){let n=Object.create(null);return i.forEach(this,(r,o)=>{r!=null&&r!==!1&&(n[o]=e&&i.isArray(r)?r.join(", "):r)}),n}[Symbol.iterator](){return Object.entries(this.toJSON())[Symbol.iterator]()}toString(){return Object.entries(this.toJSON()).map(([e,n])=>e+": "+n).join(`
-`)}get[Symbol.toStringTag](){return"AxiosHeaders"}static from(e){return e instanceof this?e:new this(e)}static concat(e,...n){let r=new this(e);return n.forEach(o=>r.set(o)),r}static accessor(e){let n=(this[kt]=this[kt]={accessors:{}}).accessors,r=this.prototype;function o(s){let a=V(s);n[a]||(function(u,d){let l=i.toCamelCase(" "+d);["get","set","has"].forEach(c=>{Object.defineProperty(u,c+l,{value:function(h,f,y){return this[c].call(this,d,h,f,y)},configurable:!0})})}(r,s),n[a]=!0)}return i.isArray(e)?e.forEach(o):o(e),this}}Z.accessor(["Content-Type","Content-Length","Accept","Accept-Encoding","User-Agent","Authorization"]),i.reduceDescriptors(Z.prototype,({value:t},e)=>{let n=e[0].toUpperCase()+e.slice(1);return{get:()=>t,set(r){this[n]=r}}}),i.freezeMethods(Z);var U=Z;function ct(t,e){let n=this||at,r=e||n,o=U.from(r.headers),s=r.data;return i.forEach(t,function(a){s=a.call(n,s,o.normalize(),e?e.status:void 0)}),o.normalize(),s}function Mt(t){return!(!t||!t.__CANCEL__)}function K(t,e,n){E.call(this,t??"canceled",E.ERR_CANCELED,e,n),this.name="CanceledError"}i.inherits(K,E,{__CANCEL__:!0});var ve=q.hasStandardBrowserEnv?{write(t,e,n,r,o,s){let a=[t+"="+encodeURIComponent(e)];i.isNumber(n)&&a.push("expires="+new Date(n).toGMTString()),i.isString(r)&&a.push("path="+r),i.isString(o)&&a.push("domain="+o),s===!0&&a.push("secure"),document.cookie=a.join("; ")},read(t){let e=document.cookie.match(new RegExp("(^|;\\s*)("+t+")=([^;]*)"));return e?decodeURIComponent(e[3]):null},remove(t){this.write(t,"",Date.now()-864e5)}}:{write(){},read:()=>null,remove(){}};function $t(t,e){return t&&!/^([a-z][a-z\d+\-.]*:)?\/\//i.test(e)?function(n,r){return r?n.replace(/\/?\/$/,"")+"/"+r.replace(/^\/+/,""):n}(t,e):e}var we=q.hasStandardBrowserEnv?function(){let t=/(msie|trident)/i.test(navigator.userAgent),e=document.createElement("a"),n;function r(o){let s=o;return t&&(e.setAttribute("href",s),s=e.href),e.setAttribute("href",s),{href:e.href,protocol:e.protocol?e.protocol.replace(/:$/,""):"",host:e.host,search:e.search?e.search.replace(/^\?/,""):"",hash:e.hash?e.hash.replace(/^#/,""):"",hostname:e.hostname,port:e.port,pathname:e.pathname.charAt(0)==="/"?e.pathname:"/"+e.pathname}}return n=r(window.location.href),function(o){let s=i.isString(o)?r(o):o;return s.protocol===n.protocol&&s.host===n.host}}():function(){return!0};function Ht(t,e){let n=0,r=function(o,s){o=o||10;let a=new Array(o),u=new Array(o),d,l=0,c=0;return s=s!==void 0?s:1e3,function(h){let f=Date.now(),y=u[c];d||(d=f),a[l]=h,u[l]=f;let p=c,b=0;for(;p!==l;)b+=a[p++],p%=o;if(l=(l+1)%o,l===c&&(c=(c+1)%o),f-d<s)return;let A=y&&f-y;return A?Math.round(1e3*b/A):void 0}}(50,250);return o=>{let s=o.loaded,a=o.lengthComputable?o.total:void 0,u=s-n,d=r(u);n=s;let l={loaded:s,total:a,progress:a?s/a:void 0,bytes:u,rate:d||void 0,estimated:d&&a&&s<=a?(a-s)/d:void 0,event:o};l[e?"download":"upload"]=!0,t(l)}}let zt={http:null,xhr:typeof XMLHttpRequest<"u"&&function(t){return new Promise(function(e,n){let r=t.data,o=U.from(t.headers).normalize(),s,a,{responseType:u,withXSRFToken:d}=t;function l(){t.cancelToken&&t.cancelToken.unsubscribe(s),t.signal&&t.signal.removeEventListener("abort",s)}if(i.isFormData(r)){if(q.hasStandardBrowserEnv||q.hasStandardBrowserWebWorkerEnv)o.setContentType(!1);else if((a=o.getContentType())!==!1){let[p,...b]=a?a.split(";").map(A=>A.trim()).filter(Boolean):[];o.setContentType([p||"multipart/form-data",...b].join("; "))}}let c=new XMLHttpRequest;if(t.auth){let p=t.auth.username||"",b=t.auth.password?unescape(encodeURIComponent(t.auth.password)):"";o.set("Authorization","Basic "+btoa(p+":"+b))}let h=$t(t.baseURL,t.url);function f(){if(!c)return;let p=U.from("getAllResponseHeaders"in c&&c.getAllResponseHeaders());(function(b,A,L){let ee=L.config.validateStatus;L.status&&ee&&!ee(L.status)?A(new E("Request failed with status code "+L.status,[E.ERR_BAD_REQUEST,E.ERR_BAD_RESPONSE][Math.floor(L.status/100)-4],L.config,L.request,L)):b(L)})(function(b){e(b),l()},function(b){n(b),l()},{data:u&&u!=="text"&&u!=="json"?c.response:c.responseText,status:c.status,statusText:c.statusText,headers:p,config:t,request:c}),c=null}if(c.open(t.method.toUpperCase(),Ut(h,t.params,t.paramsSerializer),!0),c.timeout=t.timeout,"onloadend"in c?c.onloadend=f:c.onreadystatechange=function(){c&&c.readyState===4&&(c.status!==0||c.responseURL&&c.responseURL.indexOf("file:")===0)&&setTimeout(f)},c.onabort=function(){c&&(n(new E("Request aborted",E.ECONNABORTED,t,c)),c=null)},c.onerror=function(){n(new E("Network Error",E.ERR_NETWORK,t,c)),c=null},c.ontimeout=function(){let p=t.timeout?"timeout of "+t.timeout+"ms exceeded":"timeout exceeded",b=t.transitional||Bt;t.timeoutErrorMessage&&(p=t.timeoutErrorMessage),n(new E(p,b.clarifyTimeoutError?E.ETIMEDOUT:E.ECONNABORTED,t,c)),c=null},q.hasStandardBrowserEnv&&(d&&i.isFunction(d)&&(d=d(t)),d||d!==!1&&we(h))){let p=t.xsrfHeaderName&&t.xsrfCookieName&&ve.read(t.xsrfCookieName);p&&o.set(t.xsrfHeaderName,p)}r===void 0&&o.setContentType(null),"setRequestHeader"in c&&i.forEach(o.toJSON(),function(p,b){c.setRequestHeader(b,p)}),i.isUndefined(t.withCredentials)||(c.withCredentials=!!t.withCredentials),u&&u!=="json"&&(c.responseType=t.responseType),typeof t.onDownloadProgress=="function"&&c.addEventListener("progress",Ht(t.onDownloadProgress,!0)),typeof t.onUploadProgress=="function"&&c.upload&&c.upload.addEventListener("progress",Ht(t.onUploadProgress)),(t.cancelToken||t.signal)&&(s=p=>{c&&(n(!p||p.type?new K(null,t,c):p),c.abort(),c=null)},t.cancelToken&&t.cancelToken.subscribe(s),t.signal&&(t.signal.aborted?s():t.signal.addEventListener("abort",s)));let y=function(p){let b=/^([-+\w]{1,25})(:?\/\/|:)/.exec(p);return b&&b[1]||""}(h);y&&q.protocols.indexOf(y)===-1?n(new E("Unsupported protocol "+y+":",E.ERR_BAD_REQUEST,t)):c.send(r||null)})}};i.forEach(zt,(t,e)=>{if(t){try{Object.defineProperty(t,"name",{value:e})}catch{}Object.defineProperty(t,"adapterName",{value:e})}});let Vt=t=>`- ${t}`,Ae=t=>i.isFunction(t)||t===null||t===!1;var Kt=t=>{t=i.isArray(t)?t:[t];let{length:e}=t,n,r,o={};for(let s=0;s<e;s++){let a;if(n=t[s],r=n,!Ae(n)&&(r=zt[(a=String(n)).toLowerCase()],r===void 0))throw new E(`Unknown adapter '${a}'`);if(r)break;o[a||"#"+s]=r}if(!r){let s=Object.entries(o).map(([a,u])=>`adapter ${a} `+(u===!1?"is not supported by the environment":"is not available in the build"));throw new E("There is no suitable adapter to dispatch the request "+(e?s.length>1?`since :
-`+s.map(Vt).join(`
-`):" "+Vt(s[0]):"as no adapter specified"),"ERR_NOT_SUPPORT")}return r};function ut(t){if(t.cancelToken&&t.cancelToken.throwIfRequested(),t.signal&&t.signal.aborted)throw new K(null,t)}function Jt(t){return ut(t),t.headers=U.from(t.headers),t.data=ct.call(t,t.transformRequest),["post","put","patch"].indexOf(t.method)!==-1&&t.headers.setContentType("application/x-www-form-urlencoded",!1),Kt(t.adapter||at.adapter)(t).then(function(e){return ut(t),e.data=ct.call(t,t.transformResponse,e),e.headers=U.from(e.headers),e},function(e){return Mt(e)||(ut(t),e&&e.response&&(e.response.data=ct.call(t,t.transformResponse,e.response),e.response.headers=U.from(e.response.headers))),Promise.reject(e)})}let Gt=t=>t instanceof U?{...t}:t;function M(t,e){e=e||{};let n={};function r(l,c,h){return i.isPlainObject(l)&&i.isPlainObject(c)?i.merge.call({caseless:h},l,c):i.isPlainObject(c)?i.merge({},c):i.isArray(c)?c.slice():c}function o(l,c,h){return i.isUndefined(c)?i.isUndefined(l)?void 0:r(void 0,l,h):r(l,c,h)}function s(l,c){if(!i.isUndefined(c))return r(void 0,c)}function a(l,c){return i.isUndefined(c)?i.isUndefined(l)?void 0:r(void 0,l):r(void 0,c)}function u(l,c,h){return h in e?r(l,c):h in t?r(void 0,l):void 0}let d={url:s,method:s,data:s,baseURL:a,transformRequest:a,transformResponse:a,paramsSerializer:a,timeout:a,timeoutMessage:a,withCredentials:a,withXSRFToken:a,adapter:a,responseType:a,xsrfCookieName:a,xsrfHeaderName:a,onUploadProgress:a,onDownloadProgress:a,decompress:a,maxContentLength:a,maxBodyLength:a,beforeRedirect:a,transport:a,httpAgent:a,httpsAgent:a,cancelToken:a,socketPath:a,responseEncoding:a,validateStatus:u,headers:(l,c)=>o(Gt(l),Gt(c),!0)};return i.forEach(Object.keys(Object.assign({},t,e)),function(l){let c=d[l]||o,h=c(t[l],e[l],l);i.isUndefined(h)&&c!==u||(n[l]=h)}),n}let Re="1.6.8",lt={};["object","boolean","number","function","string","symbol"].forEach((t,e)=>{lt[t]=function(n){return typeof n===t||"a"+(e<1?"n ":" ")+t}});let Wt={};lt.transitional=function(t,e,n){function r(o,s){return"[Axios v1.6.8] Transitional option '"+o+"'"+s+(n?". "+n:"")}return(o,s,a)=>{if(t===!1)throw new E(r(s," has been removed"+(e?" in "+e:"")),E.ERR_DEPRECATED);return e&&!Wt[s]&&(Wt[s]=!0,console.warn(r(s," has been deprecated since v"+e+" and will be removed in the near future"))),!t||t(o,s,a)}};var dt={assertOptions:function(t,e,n){if(typeof t!="object")throw new E("options must be an object",E.ERR_BAD_OPTION_VALUE);let r=Object.keys(t),o=r.length;for(;o-- >0;){let s=r[o],a=e[s];if(a){let u=t[s],d=u===void 0||a(u,s,t);if(d!==!0)throw new E("option "+s+" must be "+d,E.ERR_BAD_OPTION_VALUE)}else if(n!==!0)throw new E("Unknown option "+s,E.ERR_BAD_OPTION)}},validators:lt};let D=dt.validators;class Q{constructor(e){this.defaults=e,this.interceptors={request:new jt,response:new jt}}async request(e,n){try{return await this._request(e,n)}catch(r){if(r instanceof Error){let o;Error.captureStackTrace?Error.captureStackTrace(o={}):o=new Error;let s=o.stack?o.stack.replace(/^.+\n/,""):"";r.stack?s&&!String(r.stack).endsWith(s.replace(/^.+\n.+\n/,""))&&(r.stack+=`
-`+s):r.stack=s}throw r}}_request(e,n){typeof e=="string"?(n=n||{}).url=e:n=e||{},n=M(this.defaults,n);let{transitional:r,paramsSerializer:o,headers:s}=n;r!==void 0&&dt.assertOptions(r,{silentJSONParsing:D.transitional(D.boolean),forcedJSONParsing:D.transitional(D.boolean),clarifyTimeoutError:D.transitional(D.boolean)},!1),o!=null&&(i.isFunction(o)?n.paramsSerializer={serialize:o}:dt.assertOptions(o,{encode:D.function,serialize:D.function},!0)),n.method=(n.method||this.defaults.method||"get").toLowerCase();let a=s&&i.merge(s.common,s[n.method]);s&&i.forEach(["delete","get","head","post","put","patch","common"],p=>{delete s[p]}),n.headers=U.concat(a,s);let u=[],d=!0;this.interceptors.request.forEach(function(p){typeof p.runWhen=="function"&&p.runWhen(n)===!1||(d=d&&p.synchronous,u.unshift(p.fulfilled,p.rejected))});let l=[],c;this.interceptors.response.forEach(function(p){l.push(p.fulfilled,p.rejected)});let h,f=0;if(!d){let p=[Jt.bind(this),void 0];for(p.unshift.apply(p,u),p.push.apply(p,l),h=p.length,c=Promise.resolve(n);f<h;)c=c.then(p[f++],p[f++]);return c}h=u.length;let y=n;for(f=0;f<h;){let p=u[f++],b=u[f++];try{y=p(y)}catch(A){b.call(this,A);break}}try{c=Jt.call(this,y)}catch(p){return Promise.reject(p)}for(f=0,h=l.length;f<h;)c=c.then(l[f++],l[f++]);return c}getUri(e){return Ut($t((e=M(this.defaults,e)).baseURL,e.url),e.params,e.paramsSerializer)}}i.forEach(["delete","get","head","options"],function(t){Q.prototype[t]=function(e,n){return this.request(M(n||{},{method:t,url:e,data:(n||{}).data}))}}),i.forEach(["post","put","patch"],function(t){function e(n){return function(r,o,s){return this.request(M(s||{},{method:t,headers:n?{"Content-Type":"multipart/form-data"}:{},url:r,data:o}))}}Q.prototype[t]=e(),Q.prototype[t+"Form"]=e(!0)});var tt=Q;class pt{constructor(e){if(typeof e!="function")throw new TypeError("executor must be a function.");let n;this.promise=new Promise(function(o){n=o});let r=this;this.promise.then(o=>{if(!r._listeners)return;let s=r._listeners.length;for(;s-- >0;)r._listeners[s](o);r._listeners=null}),this.promise.then=o=>{let s,a=new Promise(u=>{r.subscribe(u),s=u}).then(o);return a.cancel=function(){r.unsubscribe(s)},a},e(function(o,s,a){r.reason||(r.reason=new K(o,s,a),n(r.reason))})}throwIfRequested(){if(this.reason)throw this.reason}subscribe(e){this.reason?e(this.reason):this._listeners?this._listeners.push(e):this._listeners=[e]}unsubscribe(e){if(!this._listeners)return;let n=this._listeners.indexOf(e);n!==-1&&this._listeners.splice(n,1)}static source(){let e;return{token:new pt(function(n){e=n}),cancel:e}}}var Pe=pt;let ft={Continue:100,SwitchingProtocols:101,Processing:102,EarlyHints:103,Ok:200,Created:201,Accepted:202,NonAuthoritativeInformation:203,NoContent:204,ResetContent:205,PartialContent:206,MultiStatus:207,AlreadyReported:208,ImUsed:226,MultipleChoices:300,MovedPermanently:301,Found:302,SeeOther:303,NotModified:304,UseProxy:305,Unused:306,TemporaryRedirect:307,PermanentRedirect:308,BadRequest:400,Unauthorized:401,PaymentRequired:402,Forbidden:403,NotFound:404,MethodNotAllowed:405,NotAcceptable:406,ProxyAuthenticationRequired:407,RequestTimeout:408,Conflict:409,Gone:410,LengthRequired:411,PreconditionFailed:412,PayloadTooLarge:413,UriTooLong:414,UnsupportedMediaType:415,RangeNotSatisfiable:416,ExpectationFailed:417,ImATeapot:418,MisdirectedRequest:421,UnprocessableEntity:422,Locked:423,FailedDependency:424,TooEarly:425,UpgradeRequired:426,PreconditionRequired:428,TooManyRequests:429,RequestHeaderFieldsTooLarge:431,UnavailableForLegalReasons:451,InternalServerError:500,NotImplemented:501,BadGateway:502,ServiceUnavailable:503,GatewayTimeout:504,HttpVersionNotSupported:505,VariantAlsoNegotiates:506,InsufficientStorage:507,LoopDetected:508,NotExtended:510,NetworkAuthenticationRequired:511};Object.entries(ft).forEach(([t,e])=>{ft[e]=t});var Ie=ft;let O=function t(e){let n=new tt(e),r=m(tt.prototype.request,n);return i.extend(r,tt.prototype,n,{allOwnKeys:!0}),i.extend(r,n,null,{allOwnKeys:!0}),r.create=function(o){return t(M(e,o))},r}(at);O.Axios=tt,O.CanceledError=K,O.CancelToken=Pe,O.isCancel=Mt,O.VERSION=Re,O.toFormData=X,O.AxiosError=E,O.Cancel=O.CanceledError,O.all=function(t){return Promise.all(t)},O.spread=function(t){return function(e){return t.apply(null,e)}},O.isAxiosError=function(t){return i.isObject(t)&&t.isAxiosError===!0},O.mergeConfig=M,O.AxiosHeaders=U,O.formToJSON=t=>Ft(i.isHTMLForm(t)?new FormData(t):t),O.getAdapter=Kt,O.HttpStatusCode=Ie,O.default=O;let Ce=function(t){return t.SIGNATURE="http://adlnet.gov/expapi/attachments/signature",t.CERTIFICATE_OF_COMPLETION="http://id.tincanapi.com/attachment/certificate-of-completion",t.CONTRACT="http://id.tincanapi.com/attachment/contract",t.SUPPORTING_MEDIA="http://id.tincanapi.com/attachment/supporting_media",t}({}),T=function(t){return t.ABOUT="about",t.AGENTS="agents",t.ACTIVITIES="activities",t.ACTIVITY_PROFILE="activities/profile",t.STATE="activities/state",t.AGENT_PROFILE="agents/profile",t.STATEMENT="statements",t}({});class R{}v(R,"INITIALIZED",{id:"http://adlnet.gov/expapi/verbs/initialized",display:{"en-US":"initialized"}}),v(R,"TERMINATED",{id:"http://adlnet.gov/expapi/verbs/terminated",display:{"en-US":"terminated"}}),v(R,"SUSPENDED",{id:"http://adlnet.gov/expapi/verbs/suspended",display:{"en-US":"suspended"}}),v(R,"RESUMED",{id:"http://adlnet.gov/expapi/verbs/resumed",display:{"en-US":"resumed"}}),v(R,"PASSED",{id:"http://adlnet.gov/expapi/verbs/passed",display:{"en-US":"passed"}}),v(R,"FAILED",{id:"http://adlnet.gov/expapi/verbs/failed",display:{"en-US":"failed"}}),v(R,"SCORED",{id:"http://adlnet.gov/expapi/verbs/scored",display:{"en-US":"scored"}}),v(R,"COMPLETED",{id:"http://adlnet.gov/expapi/verbs/completed",display:{"en-US":"completed"}}),v(R,"RESPONDED",{id:"http://adlnet.gov/expapi/verbs/responded",display:{"en-US":"responded"}}),v(R,"COMMENTED",{id:"http://adlnet.gov/expapi/verbs/commented",display:{"en-US":"commented"}}),v(R,"VOIDED",{id:"http://adlnet.gov/expapi/verbs/voided",display:{"en-US":"voided"}}),v(R,"PROGRESSED",{id:"http://adlnet.gov/expapi/verbs/progressed",display:{"en-US":"progressed"}}),v(R,"ANSWERED",{id:"http://adlnet.gov/expapi/verbs/answered",display:{"en-US":"answered"}});let j=`\r
-`;function Xt(t,e){let n=[],r=(Math.random()+" ").substring(2,10)+(Math.random()+" ").substring(2,10),o={"Content-Type":`multipart/mixed; boundary=${r}`};n.push(function(a,u){return[`--${u}`,"Content-Type: application/json",'Content-Disposition: form-data; name="statement"',"",JSON.stringify(a)].join(j)+j}(t,r));let s=Array.isArray(t)?t.reduce((a,u)=>a.concat(u.attachments),[]):t.attachments;return e.forEach((a,u)=>{let d=s[u];n.push(function(l,c){return[`--${c}`,`Content-Type: ${l.contentType}`,"Content-Transfer-Encoding: binary",`X-Experience-API-Hash: ${l.sha2}`].join(j)+j+j}(d,r)),n.push(a)}),n.push(`${j}--${r}--${j}`),{header:o,blob:new Blob(n)}}function ht(t){let e={};if(t.indexOf("?")===-1)return e;let n=t.substring(t.indexOf("?"));return n=n.split("#").shift(),n&&new URLSearchParams(n).forEach((r,o)=>{try{e[o]=JSON.parse(r)}catch{e[o]=r}var s;o==="actor"&&(e.actor=(s=e.actor,["name","mbox","account"].forEach(a=>{Array.isArray(s[a])&&(s[a]=a==="account"?{...!!s.account[0].accountServiceHomePage&&{homePage:s.account[0].accountServiceHomePage},...!!s.account[0].accountName&&{name:s.account[0].accountName}}:s[a][0])}),s))}),e}let Yt=6e4,Zt=36e5,Qt=864e5;function xe(t,e){let n=e.getTime()-t.getTime();if(n<=0)return"PT0S";let r=Math.floor(n/Qt),o=n%Qt,s=Math.floor(o/Zt),a=o%Zt,u=Math.floor(a/Yt),d=a%Yt/1e3;return`P${r?r+"D":""}T${s?s+"H":""}${u?u+"M":""}${d?d+"S":""}`}function Ne(){if(typeof location>"u")return Promise.reject(new Error("Environment does not support location.search"));let t=ht(location.search);if(!t.xAPILaunchService)return Promise.reject(new Error("xAPILaunchService parameter not found in URL."));let e=new URL(t.xAPILaunchService);return e.pathname+=`launch/${t.xAPILaunchKey}`,O.request({method:"POST",url:e.toString()}).then(n=>n.data)}function Le(){if(typeof location>"u")throw new Error("Environment does not support location.search");return ht(location.search)}function te(t,e){let n=`${t}:${e}`;if(typeof window<"u"&&window.btoa)return`Basic ${btoa(n)}`;if(typeof Buffer<"u")return`Basic ${Buffer.from(n,"binary").toString("base64")}`;throw new Error("Environment does not support base64 conversion.")}let N=class N{constructor(e){let n=e.version||"1.0.3";var r;this.endpoint=(r=e.endpoint).endsWith("/")?r:`${r}/`,this.headers={"X-Experience-API-Version":n,"Content-Type":"application/json",Authorization:e.auth?e.auth:te("","")}}getAxios(){return O}requestResource(e){var n;let r=Object.assign({},e.queryParams);(n=e.requestOptions)!==null&&n!==void 0&&n.useCacheBuster&&(r.cachebuster=new Date().getTime().toString());let o=this.generateURL(e.resource,r);return this.requestURL(o,e.requestConfig)}requestURL(e,n){return O.request({method:n?.method||"GET",url:e,headers:{...this.headers,...n?.headers},data:n?.data}).then(r=>{let o=r.headers["content-type"];return r.data&&o&&o.indexOf("multipart/mixed")!==-1&&(r.data=function(s){let a=s.trim().split(j)[0].trim(),u=s.split(a).map(l=>l.trim()).filter(l=>l!==""&&l!=="--"),d=[];for(let l=0;l<u.length;l++){let c={},h=u[l].split(j);for(let y=0;y<h.length-2;y++){let p=h[y].split(":");c[p[0]]=p[1]}let f=h[h.length-1];c["Content-Type"].indexOf("application/json")>-1&&(f=JSON.parse(f)),d.push(f)}return d}(r.data)),r})}generateURL(e,n){let r=Object.keys(n).map(o=>{let s=o==="agent"?JSON.stringify(n[o]):n[o];return s=encodeURIComponent(s),`${o}=${s}`}).join("&");return`${this.endpoint}${e}${r?"?"+r:""}`}};v(N,"default",N),v(N,"AttachmentUsages",Ce),v(N,"Verbs",R),v(N,"calculateISO8601Duration",xe),v(N,"getSearchQueryParamsAsObject",ht),v(N,"getXAPILaunchData",Ne),v(N,"getTinCanLaunchData",Le),v(N,"toBasicAuth",te);let S=N;return S.prototype.getAbout=function(t){return this.requestResource({resource:T.ABOUT,requestOptions:{useCacheBuster:t?.useCacheBuster}})},S.prototype.getActivity=function(t){return this.requestResource({resource:T.ACTIVITIES,queryParams:{activityId:t.activityId},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getAgent=function(t){return this.requestResource({resource:T.AGENTS,queryParams:{agent:t.agent},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.createActivityProfile=function(t){let e={};return t.etag&&(e[t.matchHeader]=t.etag),this.requestResource({resource:T.ACTIVITY_PROFILE,queryParams:{activityId:t.activityId,profileId:t.profileId},requestConfig:{method:"POST",data:t.profile,headers:e}})},S.prototype.setActivityProfile=function(t){let e={};return e[t.matchHeader]=t.etag,t.contentType&&(e["Content-Type"]=t.contentType),this.requestResource({resource:T.ACTIVITY_PROFILE,queryParams:{activityId:t.activityId,profileId:t.profileId},requestConfig:{method:"PUT",data:t.profile,headers:e}})},S.prototype.getActivityProfiles=function(t){return this.requestResource({resource:T.ACTIVITY_PROFILE,queryParams:{activityId:t.activityId,...!!t.since&&{since:t.since}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getActivityProfile=function(t){return this.requestResource({resource:T.ACTIVITY_PROFILE,queryParams:{activityId:t.activityId,profileId:t.profileId},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.deleteActivityProfile=function(t){let e={};return t.etag&&(e["If-Match"]=t.etag),this.requestResource({resource:T.ACTIVITY_PROFILE,queryParams:{activityId:t.activityId,profileId:t.profileId},requestConfig:{method:"DELETE",headers:e}})},S.prototype.createAgentProfile=function(t){let e={};return t.etag&&(e[t.matchHeader]=t.etag),this.requestResource({resource:T.AGENT_PROFILE,queryParams:{agent:t.agent,profileId:t.profileId},requestConfig:{method:"POST",data:t.profile,headers:e}})},S.prototype.setAgentProfile=function(t){let e={};return e[t.matchHeader]=t.etag,t.contentType&&(e["Content-Type"]=t.contentType),this.requestResource({resource:T.AGENT_PROFILE,queryParams:{agent:t.agent,profileId:t.profileId},requestConfig:{method:"PUT",data:t.profile,headers:e}})},S.prototype.getAgentProfiles=function(t){return this.requestResource({resource:T.AGENT_PROFILE,queryParams:{agent:t.agent,...!!t.since&&{since:t.since}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getAgentProfile=function(t){return this.requestResource({resource:T.AGENT_PROFILE,queryParams:{agent:t.agent,profileId:t.profileId},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.deleteAgentProfile=function(t){let e={};return t.etag&&(e["If-Match"]=t.etag),this.requestResource({resource:T.AGENT_PROFILE,queryParams:{agent:t.agent,profileId:t.profileId},requestConfig:{method:"DELETE",headers:e}})},S.prototype.createState=function(t){let e={};return t.etag&&t.matchHeader&&(e[t.matchHeader]=t.etag),this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,stateId:t.stateId,...!!t.registration&&{registration:t.registration}},requestConfig:{method:"POST",data:t.state,headers:e}})},S.prototype.setState=function(t){let e={};return t.etag&&t.matchHeader&&(e[t.matchHeader]=t.etag),t.contentType&&(e["Content-Type"]=t.contentType),this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,stateId:t.stateId,...!!t.registration&&{registration:t.registration}},requestConfig:{method:"PUT",data:t.state,headers:e}})},S.prototype.getStates=function(t){return this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,...!!t.registration&&{registration:t.registration},...!!t.since&&{since:t.since}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getState=function(t){return this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,stateId:t.stateId,...!!t.registration&&{registration:t.registration}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.deleteState=function(t){let e={};return t.etag&&(e["If-Match"]=t.etag),this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,stateId:t.stateId,...!!t.registration&&{registration:t.registration}},requestConfig:{method:"DELETE",headers:e}})},S.prototype.deleteStates=function(t){let e={};return t.etag&&(e["If-Match"]=t.etag),this.requestResource({resource:T.STATE,queryParams:{agent:t.agent,activityId:t.activityId,...!!t.registration&&{registration:t.registration}},requestConfig:{method:"DELETE",headers:e}})},S.prototype.getStatement=function(t){return this.requestResource({resource:T.STATEMENT,queryParams:{statementId:t.statementId,...!!t.attachments&&{attachments:t.attachments},...!!t.format&&{format:t.format}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getVoidedStatement=function(t){return this.requestResource({resource:T.STATEMENT,queryParams:{voidedStatementId:t.voidedStatementId,...!!t.attachments&&{attachments:t.attachments},...!!t.format&&{format:t.format}},requestOptions:{useCacheBuster:t.useCacheBuster}})},S.prototype.getStatements=function(t){return this.requestResource({resource:T.STATEMENT,queryParams:{...!(t==null||!t.activity)&&{activity:t.activity},...!(t==null||!t.agent)&&{agent:t.agent},...!(t==null||!t.ascending)&&{ascending:t.ascending},...!(t==null||!t.attachments)&&{attachments:t.attachments},...!(t==null||!t.format)&&{format:t.format},...!(t==null||!t.limit)&&{limit:t.limit},...!(t==null||!t.registration)&&{registration:t.registration},...!(t==null||!t.related_activities)&&{related_activities:t.related_activities},...!(t==null||!t.related_agents)&&{related_agents:t.related_agents},...!(t==null||!t.since)&&{since:t.since},...!(t==null||!t.until)&&{until:t.until},...!(t==null||!t.verb)&&{verb:t.verb}},requestOptions:{useCacheBuster:t?.useCacheBuster}})},S.prototype.getMoreStatements=function(t){let e=new URL(this.endpoint),n=`${e.protocol}//${e.host}${t.more}`;return this.requestURL(n)},S.prototype.sendStatement=function(t){var e;if(!((e=t.attachments)===null||e===void 0)&&e.length){let n=Xt(t.statement,t.attachments);return this.requestResource({resource:T.STATEMENT,requestConfig:{method:"POST",headers:n.header,data:n.blob}})}return this.requestResource({resource:T.STATEMENT,requestConfig:{method:"POST",data:t.statement}})},S.prototype.sendStatements=function(t){var e;if(!((e=t.attachments)===null||e===void 0)&&e.length){let n=Xt(t.statements,t.attachments);return this.requestResource({resource:T.STATEMENT,requestConfig:{method:"POST",headers:n.header,data:n.blob}})}return this.requestResource({resource:T.STATEMENT,requestConfig:{method:"POST",data:t.statements}})},S.prototype.voidStatement=function(t){let e={actor:t.actor,verb:R.VOIDED,object:{objectType:"StatementRef",id:t.statementId}};return this.sendStatement({statement:e})},S.prototype.voidStatements=function(t){let e=t.statementIds.map(n=>({actor:t.actor,verb:R.VOIDED,object:{objectType:"StatementRef",id:n}}));return this.sendStatements({statements:e})},S})});var Et=Me(ne(),1);var re=()=>new URL(window.location.href).pathname.substring(1);var oe={content:{"module-1-lesson-1":{completed:!1,started:!1},"module-1-lesson-2":{completed:!1,started:!1},"module-2-lesson-1":{completed:!1,started:!1}}};var _,F,$="https://example.com/activities/test-activity4",J=`${$}/states/myStateId4`,se=async()=>{let m=new URLSearchParams(window.location.search),g=m.get("appId"),w=m.get("key");if(!g||!w){console.error("Missing appId or secretKey query param"),alert("Missing appId or secretKey query param");return}let x=`https://cloud.scorm.com/tc/${g}`,I=g,P=w,k=Et.default.toBasicAuth(I,P);_=new Et.default({endpoint:x,auth:k});let B=await _.getAbout();console.log("xapi initialized"),console.log({about:B}),await $e()},$e=async()=>{console.log("initializeState"),F={objectType:"Agent",name:"<name>",mbox:"mailto:testagent2@test.com"};try{let m=await _.getState({agent:F,activityId:$,stateId:J});if(m.data){console.log("state already exists"),console.log({retrievedState:m});return}}catch(m){console.log("Error retrieving state:",m);let g=m;if(g.response&&g.response.status===404)console.log("State not found, proceeding to create a new state");else{console.error("Error retrieving state:",m);return}}try{let m=await _.createState({agent:F,activityId:$,stateId:J,state:{...oe}});console.log("state initialized"),console.log({createdState:m})}catch(m){console.error("Error creating state:",m)}},He=async m=>{try{let g=await _.sendStatement({statement:m});console.log("Statement sent successfully:",g)}catch(g){console.error("Error sending statement:",g)}},ae=async()=>{console.log("startLesson");let m=re(),g=await _.getState({agent:F,activityId:$,stateId:J});console.log({retrievedState:g});let w=g.data.content[m]?.started;if(console.log({started:w}),w){console.log("Lesson already started");return}g.data.content[m].started=!0;try{await _.setState({agent:F,activityId:$,stateId:J,state:{...g.data}}),console.log("State updated successfully")}catch(P){console.error("Error updating state:",P);return}let x={actor:F,verb:{id:"http://adlnet.gov/expapi/verbs/launched",display:{"en-US":"launched"}},object:{id:`http://example.com/activities/${m}`,definition:{name:{"en-US":m}}},timestamp:new Date().toISOString()};await He(x);let I=await _.getState({agent:F,activityId:$,stateId:J});console.log({newState:I})};document.addEventListener("DOMContentLoaded",ze);async function ze(){se(),await ae()}})();
+"use strict";
+(() => {
+  var __create = Object.create;
+  var __defProp = Object.defineProperty;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getProtoOf = Object.getPrototypeOf;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __esm = (fn, res) => function __init() {
+    return fn && (res = (0, fn[__getOwnPropNames(fn)[0]])(fn = 0)), res;
+  };
+  var __commonJS = (cb, mod) => function __require() {
+    return mod || (0, cb[__getOwnPropNames(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(
+    // If the importer is in node compatibility mode or this is not an ESM
+    // file that has been converted to a CommonJS file using a Babel-
+    // compatible transform (i.e. "__esModule" has not been set), then set
+    // "default" to the CommonJS "module.exports" for node compatibility.
+    isNodeMode || !mod || !mod.__esModule ? __defProp(target, "default", { value: mod, enumerable: true }) : target,
+    mod
+  ));
+
+  // bin/live-reload.js
+  var init_live_reload = __esm({
+    "bin/live-reload.js"() {
+      "use strict";
+      new EventSource(`${"http://localhost:3000"}/esbuild`).addEventListener("change", () => location.reload());
+    }
+  });
+
+  // node_modules/.pnpm/@xapi+xapi@2.2.7/node_modules/@xapi/xapi/dist/XAPI.umd.js
+  var require_XAPI_umd = __commonJS({
+    "node_modules/.pnpm/@xapi+xapi@2.2.7/node_modules/@xapi/xapi/dist/XAPI.umd.js"(exports, module) {
+      init_live_reload();
+      !function(e, t) {
+        "object" == typeof exports && "undefined" != typeof module ? module.exports = t() : "function" == typeof define && define.amd ? define(t) : (e = "undefined" != typeof globalThis ? globalThis : e || self).XAPI = t();
+      }(exports, function() {
+        "use strict";
+        function e(e2, t2) {
+          return function() {
+            return e2.apply(t2, arguments);
+          };
+        }
+        const { toString: t } = Object.prototype, { getPrototypeOf: r } = Object, n = (o = /* @__PURE__ */ Object.create(null), (e2) => {
+          const r2 = t.call(e2);
+          return o[r2] || (o[r2] = r2.slice(8, -1).toLowerCase());
+        });
+        var o;
+        const s = (e2) => (e2 = e2.toLowerCase(), (t2) => n(t2) === e2), i = (e2) => (t2) => typeof t2 === e2, { isArray: a } = Array, c = i("undefined");
+        const u = s("ArrayBuffer");
+        const l = i("string"), d = i("function"), f = i("number"), p = (e2) => null !== e2 && "object" == typeof e2, h = (e2) => {
+          if ("object" !== n(e2))
+            return false;
+          const t2 = r(e2);
+          return !(null !== t2 && t2 !== Object.prototype && null !== Object.getPrototypeOf(t2) || Symbol.toStringTag in e2 || Symbol.iterator in e2);
+        }, m = s("Date"), g = s("File"), y = s("Blob"), E = s("FileList"), b = s("URLSearchParams");
+        function T(e2, t2, { allOwnKeys: r2 = false } = {}) {
+          if (null == e2)
+            return;
+          let n2, o2;
+          if ("object" != typeof e2 && (e2 = [e2]), a(e2))
+            for (n2 = 0, o2 = e2.length; n2 < o2; n2++)
+              t2.call(null, e2[n2], n2, e2);
+          else {
+            const o3 = r2 ? Object.getOwnPropertyNames(e2) : Object.keys(e2), s2 = o3.length;
+            let i2;
+            for (n2 = 0; n2 < s2; n2++)
+              i2 = o3[n2], t2.call(null, e2[i2], i2, e2);
+          }
+        }
+        function S(e2, t2) {
+          t2 = t2.toLowerCase();
+          const r2 = Object.keys(e2);
+          let n2, o2 = r2.length;
+          for (; o2-- > 0; )
+            if (n2 = r2[o2], t2 === n2.toLowerCase())
+              return n2;
+          return null;
+        }
+        const O = "undefined" != typeof globalThis ? globalThis : "undefined" != typeof self ? self : "undefined" != typeof window ? window : global, v = (e2) => !c(e2) && e2 !== O;
+        const R = (A = "undefined" != typeof Uint8Array && r(Uint8Array), (e2) => A && e2 instanceof A);
+        var A;
+        const w = s("HTMLFormElement"), P = (({ hasOwnProperty: e2 }) => (t2, r2) => e2.call(t2, r2))(Object.prototype), C = s("RegExp"), I = (e2, t2) => {
+          const r2 = Object.getOwnPropertyDescriptors(e2), n2 = {};
+          T(r2, (r3, o2) => {
+            let s2;
+            false !== (s2 = t2(r3, o2, e2)) && (n2[o2] = s2 || r3);
+          }), Object.defineProperties(e2, n2);
+        }, N = "abcdefghijklmnopqrstuvwxyz", q = "0123456789", x = { DIGIT: q, ALPHA: N, ALPHA_DIGIT: N + N.toUpperCase() + q };
+        const j = s("AsyncFunction");
+        var U = { isArray: a, isArrayBuffer: u, isBuffer: function(e2) {
+          return null !== e2 && !c(e2) && null !== e2.constructor && !c(e2.constructor) && d(e2.constructor.isBuffer) && e2.constructor.isBuffer(e2);
+        }, isFormData: (e2) => {
+          let t2;
+          return e2 && ("function" == typeof FormData && e2 instanceof FormData || d(e2.append) && ("formdata" === (t2 = n(e2)) || "object" === t2 && d(e2.toString) && "[object FormData]" === e2.toString()));
+        }, isArrayBufferView: function(e2) {
+          let t2;
+          return t2 = "undefined" != typeof ArrayBuffer && ArrayBuffer.isView ? ArrayBuffer.isView(e2) : e2 && e2.buffer && u(e2.buffer), t2;
+        }, isString: l, isNumber: f, isBoolean: (e2) => true === e2 || false === e2, isObject: p, isPlainObject: h, isUndefined: c, isDate: m, isFile: g, isBlob: y, isRegExp: C, isFunction: d, isStream: (e2) => p(e2) && d(e2.pipe), isURLSearchParams: b, isTypedArray: R, isFileList: E, forEach: T, merge: function e2() {
+          const { caseless: t2 } = v(this) && this || {}, r2 = {}, n2 = (n3, o2) => {
+            const s2 = t2 && S(r2, o2) || o2;
+            h(r2[s2]) && h(n3) ? r2[s2] = e2(r2[s2], n3) : h(n3) ? r2[s2] = e2({}, n3) : a(n3) ? r2[s2] = n3.slice() : r2[s2] = n3;
+          };
+          for (let e3 = 0, t3 = arguments.length; e3 < t3; e3++)
+            arguments[e3] && T(arguments[e3], n2);
+          return r2;
+        }, extend: (t2, r2, n2, { allOwnKeys: o2 } = {}) => (T(r2, (r3, o3) => {
+          n2 && d(r3) ? t2[o3] = e(r3, n2) : t2[o3] = r3;
+        }, { allOwnKeys: o2 }), t2), trim: (e2) => e2.trim ? e2.trim() : e2.replace(/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g, ""), stripBOM: (e2) => (65279 === e2.charCodeAt(0) && (e2 = e2.slice(1)), e2), inherits: (e2, t2, r2, n2) => {
+          e2.prototype = Object.create(t2.prototype, n2), e2.prototype.constructor = e2, Object.defineProperty(e2, "super", { value: t2.prototype }), r2 && Object.assign(e2.prototype, r2);
+        }, toFlatObject: (e2, t2, n2, o2) => {
+          let s2, i2, a2;
+          const c2 = {};
+          if (t2 = t2 || {}, null == e2)
+            return t2;
+          do {
+            for (s2 = Object.getOwnPropertyNames(e2), i2 = s2.length; i2-- > 0; )
+              a2 = s2[i2], o2 && !o2(a2, e2, t2) || c2[a2] || (t2[a2] = e2[a2], c2[a2] = true);
+            e2 = false !== n2 && r(e2);
+          } while (e2 && (!n2 || n2(e2, t2)) && e2 !== Object.prototype);
+          return t2;
+        }, kindOf: n, kindOfTest: s, endsWith: (e2, t2, r2) => {
+          e2 = String(e2), (void 0 === r2 || r2 > e2.length) && (r2 = e2.length), r2 -= t2.length;
+          const n2 = e2.indexOf(t2, r2);
+          return -1 !== n2 && n2 === r2;
+        }, toArray: (e2) => {
+          if (!e2)
+            return null;
+          if (a(e2))
+            return e2;
+          let t2 = e2.length;
+          if (!f(t2))
+            return null;
+          const r2 = new Array(t2);
+          for (; t2-- > 0; )
+            r2[t2] = e2[t2];
+          return r2;
+        }, forEachEntry: (e2, t2) => {
+          const r2 = (e2 && e2[Symbol.iterator]).call(e2);
+          let n2;
+          for (; (n2 = r2.next()) && !n2.done; ) {
+            const r3 = n2.value;
+            t2.call(e2, r3[0], r3[1]);
+          }
+        }, matchAll: (e2, t2) => {
+          let r2;
+          const n2 = [];
+          for (; null !== (r2 = e2.exec(t2)); )
+            n2.push(r2);
+          return n2;
+        }, isHTMLForm: w, hasOwnProperty: P, hasOwnProp: P, reduceDescriptors: I, freezeMethods: (e2) => {
+          I(e2, (t2, r2) => {
+            if (d(e2) && -1 !== ["arguments", "caller", "callee"].indexOf(r2))
+              return false;
+            const n2 = e2[r2];
+            d(n2) && (t2.enumerable = false, "writable" in t2 ? t2.writable = false : t2.set || (t2.set = () => {
+              throw Error("Can not rewrite read-only method '" + r2 + "'");
+            }));
+          });
+        }, toObjectSet: (e2, t2) => {
+          const r2 = {}, n2 = (e3) => {
+            e3.forEach((e4) => {
+              r2[e4] = true;
+            });
+          };
+          return a(e2) ? n2(e2) : n2(String(e2).split(t2)), r2;
+        }, toCamelCase: (e2) => e2.toLowerCase().replace(/[-_\s]([a-z\d])(\w*)/g, function(e3, t2, r2) {
+          return t2.toUpperCase() + r2;
+        }), noop: () => {
+        }, toFiniteNumber: (e2, t2) => (e2 = +e2, Number.isFinite(e2) ? e2 : t2), findKey: S, global: O, isContextDefined: v, ALPHABET: x, generateString: (e2 = 16, t2 = x.ALPHA_DIGIT) => {
+          let r2 = "";
+          const { length: n2 } = t2;
+          for (; e2--; )
+            r2 += t2[Math.random() * n2 | 0];
+          return r2;
+        }, isSpecCompliantForm: function(e2) {
+          return !!(e2 && d(e2.append) && "FormData" === e2[Symbol.toStringTag] && e2[Symbol.iterator]);
+        }, toJSONObject: (e2) => {
+          const t2 = new Array(10), r2 = (e3, n2) => {
+            if (p(e3)) {
+              if (t2.indexOf(e3) >= 0)
+                return;
+              if (!("toJSON" in e3)) {
+                t2[n2] = e3;
+                const o2 = a(e3) ? [] : {};
+                return T(e3, (e4, t3) => {
+                  const s2 = r2(e4, n2 + 1);
+                  !c(s2) && (o2[t3] = s2);
+                }), t2[n2] = void 0, o2;
+              }
+            }
+            return e3;
+          };
+          return r2(e2, 0);
+        }, isAsyncFn: j, isThenable: (e2) => e2 && (p(e2) || d(e2)) && d(e2.then) && d(e2.catch) };
+        function _(e2, t2, r2, n2, o2) {
+          Error.call(this), Error.captureStackTrace ? Error.captureStackTrace(this, this.constructor) : this.stack = new Error().stack, this.message = e2, this.name = "AxiosError", t2 && (this.code = t2), r2 && (this.config = r2), n2 && (this.request = n2), o2 && (this.response = o2);
+        }
+        U.inherits(_, Error, { toJSON: function() {
+          return { message: this.message, name: this.name, description: this.description, number: this.number, fileName: this.fileName, lineNumber: this.lineNumber, columnNumber: this.columnNumber, stack: this.stack, config: U.toJSONObject(this.config), code: this.code, status: this.response && this.response.status ? this.response.status : null };
+        } });
+        const B = _.prototype, L = {};
+        ["ERR_BAD_OPTION_VALUE", "ERR_BAD_OPTION", "ECONNABORTED", "ETIMEDOUT", "ERR_NETWORK", "ERR_FR_TOO_MANY_REDIRECTS", "ERR_DEPRECATED", "ERR_BAD_RESPONSE", "ERR_BAD_REQUEST", "ERR_CANCELED", "ERR_NOT_SUPPORT", "ERR_INVALID_URL"].forEach((e2) => {
+          L[e2] = { value: e2 };
+        }), Object.defineProperties(_, L), Object.defineProperty(B, "isAxiosError", { value: true }), _.from = (e2, t2, r2, n2, o2, s2) => {
+          const i2 = Object.create(B);
+          return U.toFlatObject(e2, i2, function(e3) {
+            return e3 !== Error.prototype;
+          }, (e3) => "isAxiosError" !== e3), _.call(i2, e2.message, t2, r2, n2, o2), i2.cause = e2, i2.name = e2.name, s2 && Object.assign(i2, s2), i2;
+        };
+        function D(e2) {
+          return U.isPlainObject(e2) || U.isArray(e2);
+        }
+        function F(e2) {
+          return U.endsWith(e2, "[]") ? e2.slice(0, -2) : e2;
+        }
+        function k(e2, t2, r2) {
+          return e2 ? e2.concat(t2).map(function(e3, t3) {
+            return e3 = F(e3), !r2 && t3 ? "[" + e3 + "]" : e3;
+          }).join(r2 ? "." : "") : t2;
+        }
+        const M = U.toFlatObject(U, {}, null, function(e2) {
+          return /^is[A-Z]/.test(e2);
+        });
+        function H(e2, t2, r2) {
+          if (!U.isObject(e2))
+            throw new TypeError("target must be an object");
+          t2 = t2 || new FormData();
+          const n2 = (r2 = U.toFlatObject(r2, { metaTokens: true, dots: false, indexes: false }, false, function(e3, t3) {
+            return !U.isUndefined(t3[e3]);
+          })).metaTokens, o2 = r2.visitor || u2, s2 = r2.dots, i2 = r2.indexes, a2 = (r2.Blob || "undefined" != typeof Blob && Blob) && U.isSpecCompliantForm(t2);
+          if (!U.isFunction(o2))
+            throw new TypeError("visitor must be a function");
+          function c2(e3) {
+            if (null === e3)
+              return "";
+            if (U.isDate(e3))
+              return e3.toISOString();
+            if (!a2 && U.isBlob(e3))
+              throw new _("Blob is not supported. Use a Buffer instead.");
+            return U.isArrayBuffer(e3) || U.isTypedArray(e3) ? a2 && "function" == typeof Blob ? new Blob([e3]) : Buffer.from(e3) : e3;
+          }
+          function u2(e3, r3, o3) {
+            let a3 = e3;
+            if (e3 && !o3 && "object" == typeof e3) {
+              if (U.endsWith(r3, "{}"))
+                r3 = n2 ? r3 : r3.slice(0, -2), e3 = JSON.stringify(e3);
+              else if (U.isArray(e3) && function(e4) {
+                return U.isArray(e4) && !e4.some(D);
+              }(e3) || (U.isFileList(e3) || U.endsWith(r3, "[]")) && (a3 = U.toArray(e3)))
+                return r3 = F(r3), a3.forEach(function(e4, n3) {
+                  !U.isUndefined(e4) && null !== e4 && t2.append(true === i2 ? k([r3], n3, s2) : null === i2 ? r3 : r3 + "[]", c2(e4));
+                }), false;
+            }
+            return !!D(e3) || (t2.append(k(o3, r3, s2), c2(e3)), false);
+          }
+          const l2 = [], d2 = Object.assign(M, { defaultVisitor: u2, convertValue: c2, isVisitable: D });
+          if (!U.isObject(e2))
+            throw new TypeError("data must be an object");
+          return function e3(r3, n3) {
+            if (!U.isUndefined(r3)) {
+              if (-1 !== l2.indexOf(r3))
+                throw Error("Circular reference detected in " + n3.join("."));
+              l2.push(r3), U.forEach(r3, function(r4, s3) {
+                true === (!(U.isUndefined(r4) || null === r4) && o2.call(t2, r4, U.isString(s3) ? s3.trim() : s3, n3, d2)) && e3(r4, n3 ? n3.concat(s3) : [s3]);
+              }), l2.pop();
+            }
+          }(e2), t2;
+        }
+        function $(e2) {
+          const t2 = { "!": "%21", "'": "%27", "(": "%28", ")": "%29", "~": "%7E", "%20": "+", "%00": "\0" };
+          return encodeURIComponent(e2).replace(/[!'()~]|%20|%00/g, function(e3) {
+            return t2[e3];
+          });
+        }
+        function z(e2, t2) {
+          this._pairs = [], e2 && H(e2, this, t2);
+        }
+        const V = z.prototype;
+        function J(e2) {
+          return encodeURIComponent(e2).replace(/%3A/gi, ":").replace(/%24/g, "$").replace(/%2C/gi, ",").replace(/%20/g, "+").replace(/%5B/gi, "[").replace(/%5D/gi, "]");
+        }
+        function G(e2, t2, r2) {
+          if (!t2)
+            return e2;
+          const n2 = r2 && r2.encode || J, o2 = r2 && r2.serialize;
+          let s2;
+          if (s2 = o2 ? o2(t2, r2) : U.isURLSearchParams(t2) ? t2.toString() : new z(t2, r2).toString(n2), s2) {
+            const t3 = e2.indexOf("#");
+            -1 !== t3 && (e2 = e2.slice(0, t3)), e2 += (-1 === e2.indexOf("?") ? "?" : "&") + s2;
+          }
+          return e2;
+        }
+        V.append = function(e2, t2) {
+          this._pairs.push([e2, t2]);
+        }, V.toString = function(e2) {
+          const t2 = e2 ? function(t3) {
+            return e2.call(this, t3, $);
+          } : $;
+          return this._pairs.map(function(e3) {
+            return t2(e3[0]) + "=" + t2(e3[1]);
+          }, "").join("&");
+        };
+        class W {
+          constructor() {
+            this.handlers = [];
+          }
+          use(e2, t2, r2) {
+            return this.handlers.push({ fulfilled: e2, rejected: t2, synchronous: !!r2 && r2.synchronous, runWhen: r2 ? r2.runWhen : null }), this.handlers.length - 1;
+          }
+          eject(e2) {
+            this.handlers[e2] && (this.handlers[e2] = null);
+          }
+          clear() {
+            this.handlers && (this.handlers = []);
+          }
+          forEach(e2) {
+            U.forEach(this.handlers, function(t2) {
+              null !== t2 && e2(t2);
+            });
+          }
+        }
+        var K = { silentJSONParsing: true, forcedJSONParsing: true, clarifyTimeoutError: false }, X = { isBrowser: true, classes: { URLSearchParams: "undefined" != typeof URLSearchParams ? URLSearchParams : z, FormData: "undefined" != typeof FormData ? FormData : null, Blob: "undefined" != typeof Blob ? Blob : null }, protocols: ["http", "https", "file", "blob", "url", "data"] };
+        const Y = "undefined" != typeof window && "undefined" != typeof document, Q = (Z = "undefined" != typeof navigator && navigator.product, Y && ["ReactNative", "NativeScript", "NS"].indexOf(Z) < 0);
+        var Z;
+        const ee = "undefined" != typeof WorkerGlobalScope && self instanceof WorkerGlobalScope && "function" == typeof self.importScripts;
+        var te = { ...Object.freeze({ __proto__: null, hasBrowserEnv: Y, hasStandardBrowserEnv: Q, hasStandardBrowserWebWorkerEnv: ee }), ...X };
+        function re(e2) {
+          function t2(e3, r2, n2, o2) {
+            let s2 = e3[o2++];
+            if ("__proto__" === s2)
+              return true;
+            const i2 = Number.isFinite(+s2), a2 = o2 >= e3.length;
+            if (s2 = !s2 && U.isArray(n2) ? n2.length : s2, a2)
+              return U.hasOwnProp(n2, s2) ? n2[s2] = [n2[s2], r2] : n2[s2] = r2, !i2;
+            n2[s2] && U.isObject(n2[s2]) || (n2[s2] = []);
+            return t2(e3, r2, n2[s2], o2) && U.isArray(n2[s2]) && (n2[s2] = function(e4) {
+              const t3 = {}, r3 = Object.keys(e4);
+              let n3;
+              const o3 = r3.length;
+              let s3;
+              for (n3 = 0; n3 < o3; n3++)
+                s3 = r3[n3], t3[s3] = e4[s3];
+              return t3;
+            }(n2[s2])), !i2;
+          }
+          if (U.isFormData(e2) && U.isFunction(e2.entries)) {
+            const r2 = {};
+            return U.forEachEntry(e2, (e3, n2) => {
+              t2(function(e4) {
+                return U.matchAll(/\w+|\[(\w*)]/g, e4).map((e5) => "[]" === e5[0] ? "" : e5[1] || e5[0]);
+              }(e3), n2, r2, 0);
+            }), r2;
+          }
+          return null;
+        }
+        const ne = { transitional: K, adapter: ["xhr", "http"], transformRequest: [function(e2, t2) {
+          const r2 = t2.getContentType() || "", n2 = r2.indexOf("application/json") > -1, o2 = U.isObject(e2);
+          o2 && U.isHTMLForm(e2) && (e2 = new FormData(e2));
+          if (U.isFormData(e2))
+            return n2 ? JSON.stringify(re(e2)) : e2;
+          if (U.isArrayBuffer(e2) || U.isBuffer(e2) || U.isStream(e2) || U.isFile(e2) || U.isBlob(e2))
+            return e2;
+          if (U.isArrayBufferView(e2))
+            return e2.buffer;
+          if (U.isURLSearchParams(e2))
+            return t2.setContentType("application/x-www-form-urlencoded;charset=utf-8", false), e2.toString();
+          let s2;
+          if (o2) {
+            if (r2.indexOf("application/x-www-form-urlencoded") > -1)
+              return function(e3, t3) {
+                return H(e3, new te.classes.URLSearchParams(), Object.assign({ visitor: function(e4, t4, r3, n3) {
+                  return te.isNode && U.isBuffer(e4) ? (this.append(t4, e4.toString("base64")), false) : n3.defaultVisitor.apply(this, arguments);
+                } }, t3));
+              }(e2, this.formSerializer).toString();
+            if ((s2 = U.isFileList(e2)) || r2.indexOf("multipart/form-data") > -1) {
+              const t3 = this.env && this.env.FormData;
+              return H(s2 ? { "files[]": e2 } : e2, t3 && new t3(), this.formSerializer);
+            }
+          }
+          return o2 || n2 ? (t2.setContentType("application/json", false), function(e3, t3, r3) {
+            if (U.isString(e3))
+              try {
+                return (t3 || JSON.parse)(e3), U.trim(e3);
+              } catch (e4) {
+                if ("SyntaxError" !== e4.name)
+                  throw e4;
+              }
+            return (r3 || JSON.stringify)(e3);
+          }(e2)) : e2;
+        }], transformResponse: [function(e2) {
+          const t2 = this.transitional || ne.transitional, r2 = t2 && t2.forcedJSONParsing, n2 = "json" === this.responseType;
+          if (e2 && U.isString(e2) && (r2 && !this.responseType || n2)) {
+            const r3 = !(t2 && t2.silentJSONParsing) && n2;
+            try {
+              return JSON.parse(e2);
+            } catch (e3) {
+              if (r3) {
+                if ("SyntaxError" === e3.name)
+                  throw _.from(e3, _.ERR_BAD_RESPONSE, this, null, this.response);
+                throw e3;
+              }
+            }
+          }
+          return e2;
+        }], timeout: 0, xsrfCookieName: "XSRF-TOKEN", xsrfHeaderName: "X-XSRF-TOKEN", maxContentLength: -1, maxBodyLength: -1, env: { FormData: te.classes.FormData, Blob: te.classes.Blob }, validateStatus: function(e2) {
+          return e2 >= 200 && e2 < 300;
+        }, headers: { common: { Accept: "application/json, text/plain, */*", "Content-Type": void 0 } } };
+        U.forEach(["delete", "get", "head", "post", "put", "patch"], (e2) => {
+          ne.headers[e2] = {};
+        });
+        var oe = ne;
+        const se = U.toObjectSet(["age", "authorization", "content-length", "content-type", "etag", "expires", "from", "host", "if-modified-since", "if-unmodified-since", "last-modified", "location", "max-forwards", "proxy-authorization", "referer", "retry-after", "user-agent"]);
+        const ie = Symbol("internals");
+        function ae(e2) {
+          return e2 && String(e2).trim().toLowerCase();
+        }
+        function ce(e2) {
+          return false === e2 || null == e2 ? e2 : U.isArray(e2) ? e2.map(ce) : String(e2);
+        }
+        function ue(e2, t2, r2, n2, o2) {
+          return U.isFunction(n2) ? n2.call(this, t2, r2) : (o2 && (t2 = r2), U.isString(t2) ? U.isString(n2) ? -1 !== t2.indexOf(n2) : U.isRegExp(n2) ? n2.test(t2) : void 0 : void 0);
+        }
+        class le {
+          constructor(e2) {
+            e2 && this.set(e2);
+          }
+          set(e2, t2, r2) {
+            const n2 = this;
+            function o2(e3, t3, r3) {
+              const o3 = ae(t3);
+              if (!o3)
+                throw new Error("header name must be a non-empty string");
+              const s3 = U.findKey(n2, o3);
+              (!s3 || void 0 === n2[s3] || true === r3 || void 0 === r3 && false !== n2[s3]) && (n2[s3 || t3] = ce(e3));
+            }
+            const s2 = (e3, t3) => U.forEach(e3, (e4, r3) => o2(e4, r3, t3));
+            return U.isPlainObject(e2) || e2 instanceof this.constructor ? s2(e2, t2) : U.isString(e2) && (e2 = e2.trim()) && !/^[-_a-zA-Z0-9^`|~,!#$%&'*+.]+$/.test(e2.trim()) ? s2(((e3) => {
+              const t3 = {};
+              let r3, n3, o3;
+              return e3 && e3.split("\n").forEach(function(e4) {
+                o3 = e4.indexOf(":"), r3 = e4.substring(0, o3).trim().toLowerCase(), n3 = e4.substring(o3 + 1).trim(), !r3 || t3[r3] && se[r3] || ("set-cookie" === r3 ? t3[r3] ? t3[r3].push(n3) : t3[r3] = [n3] : t3[r3] = t3[r3] ? t3[r3] + ", " + n3 : n3);
+              }), t3;
+            })(e2), t2) : null != e2 && o2(t2, e2, r2), this;
+          }
+          get(e2, t2) {
+            if (e2 = ae(e2)) {
+              const r2 = U.findKey(this, e2);
+              if (r2) {
+                const e3 = this[r2];
+                if (!t2)
+                  return e3;
+                if (true === t2)
+                  return function(e4) {
+                    const t3 = /* @__PURE__ */ Object.create(null), r3 = /([^\s,;=]+)\s*(?:=\s*([^,;]+))?/g;
+                    let n2;
+                    for (; n2 = r3.exec(e4); )
+                      t3[n2[1]] = n2[2];
+                    return t3;
+                  }(e3);
+                if (U.isFunction(t2))
+                  return t2.call(this, e3, r2);
+                if (U.isRegExp(t2))
+                  return t2.exec(e3);
+                throw new TypeError("parser must be boolean|regexp|function");
+              }
+            }
+          }
+          has(e2, t2) {
+            if (e2 = ae(e2)) {
+              const r2 = U.findKey(this, e2);
+              return !(!r2 || void 0 === this[r2] || t2 && !ue(0, this[r2], r2, t2));
+            }
+            return false;
+          }
+          delete(e2, t2) {
+            const r2 = this;
+            let n2 = false;
+            function o2(e3) {
+              if (e3 = ae(e3)) {
+                const o3 = U.findKey(r2, e3);
+                !o3 || t2 && !ue(0, r2[o3], o3, t2) || (delete r2[o3], n2 = true);
+              }
+            }
+            return U.isArray(e2) ? e2.forEach(o2) : o2(e2), n2;
+          }
+          clear(e2) {
+            const t2 = Object.keys(this);
+            let r2 = t2.length, n2 = false;
+            for (; r2--; ) {
+              const o2 = t2[r2];
+              e2 && !ue(0, this[o2], o2, e2, true) || (delete this[o2], n2 = true);
+            }
+            return n2;
+          }
+          normalize(e2) {
+            const t2 = this, r2 = {};
+            return U.forEach(this, (n2, o2) => {
+              const s2 = U.findKey(r2, o2);
+              if (s2)
+                return t2[s2] = ce(n2), void delete t2[o2];
+              const i2 = e2 ? function(e3) {
+                return e3.trim().toLowerCase().replace(/([a-z\d])(\w*)/g, (e4, t3, r3) => t3.toUpperCase() + r3);
+              }(o2) : String(o2).trim();
+              i2 !== o2 && delete t2[o2], t2[i2] = ce(n2), r2[i2] = true;
+            }), this;
+          }
+          concat(...e2) {
+            return this.constructor.concat(this, ...e2);
+          }
+          toJSON(e2) {
+            const t2 = /* @__PURE__ */ Object.create(null);
+            return U.forEach(this, (r2, n2) => {
+              null != r2 && false !== r2 && (t2[n2] = e2 && U.isArray(r2) ? r2.join(", ") : r2);
+            }), t2;
+          }
+          [Symbol.iterator]() {
+            return Object.entries(this.toJSON())[Symbol.iterator]();
+          }
+          toString() {
+            return Object.entries(this.toJSON()).map(([e2, t2]) => e2 + ": " + t2).join("\n");
+          }
+          get [Symbol.toStringTag]() {
+            return "AxiosHeaders";
+          }
+          static from(e2) {
+            return e2 instanceof this ? e2 : new this(e2);
+          }
+          static concat(e2, ...t2) {
+            const r2 = new this(e2);
+            return t2.forEach((e3) => r2.set(e3)), r2;
+          }
+          static accessor(e2) {
+            const t2 = (this[ie] = this[ie] = { accessors: {} }).accessors, r2 = this.prototype;
+            function n2(e3) {
+              const n3 = ae(e3);
+              t2[n3] || (!function(e4, t3) {
+                const r3 = U.toCamelCase(" " + t3);
+                ["get", "set", "has"].forEach((n4) => {
+                  Object.defineProperty(e4, n4 + r3, { value: function(e5, r4, o2) {
+                    return this[n4].call(this, t3, e5, r4, o2);
+                  }, configurable: true });
+                });
+              }(r2, e3), t2[n3] = true);
+            }
+            return U.isArray(e2) ? e2.forEach(n2) : n2(e2), this;
+          }
+        }
+        le.accessor(["Content-Type", "Content-Length", "Accept", "Accept-Encoding", "User-Agent", "Authorization"]), U.reduceDescriptors(le.prototype, ({ value: e2 }, t2) => {
+          let r2 = t2[0].toUpperCase() + t2.slice(1);
+          return { get: () => e2, set(e3) {
+            this[r2] = e3;
+          } };
+        }), U.freezeMethods(le);
+        var de = le;
+        function fe(e2, t2) {
+          const r2 = this || oe, n2 = t2 || r2, o2 = de.from(n2.headers);
+          let s2 = n2.data;
+          return U.forEach(e2, function(e3) {
+            s2 = e3.call(r2, s2, o2.normalize(), t2 ? t2.status : void 0);
+          }), o2.normalize(), s2;
+        }
+        function pe(e2) {
+          return !(!e2 || !e2.__CANCEL__);
+        }
+        function he(e2, t2, r2) {
+          _.call(this, null == e2 ? "canceled" : e2, _.ERR_CANCELED, t2, r2), this.name = "CanceledError";
+        }
+        U.inherits(he, _, { __CANCEL__: true });
+        var me = te.hasStandardBrowserEnv ? { write(e2, t2, r2, n2, o2, s2) {
+          const i2 = [e2 + "=" + encodeURIComponent(t2)];
+          U.isNumber(r2) && i2.push("expires=" + new Date(r2).toGMTString()), U.isString(n2) && i2.push("path=" + n2), U.isString(o2) && i2.push("domain=" + o2), true === s2 && i2.push("secure"), document.cookie = i2.join("; ");
+        }, read(e2) {
+          const t2 = document.cookie.match(new RegExp("(^|;\\s*)(" + e2 + ")=([^;]*)"));
+          return t2 ? decodeURIComponent(t2[3]) : null;
+        }, remove(e2) {
+          this.write(e2, "", Date.now() - 864e5);
+        } } : { write() {
+        }, read: () => null, remove() {
+        } };
+        function ge(e2, t2) {
+          return e2 && !/^([a-z][a-z\d+\-.]*:)?\/\//i.test(t2) ? function(e3, t3) {
+            return t3 ? e3.replace(/\/?\/$/, "") + "/" + t3.replace(/^\/+/, "") : e3;
+          }(e2, t2) : t2;
+        }
+        var ye = te.hasStandardBrowserEnv ? function() {
+          const e2 = /(msie|trident)/i.test(navigator.userAgent), t2 = document.createElement("a");
+          let r2;
+          function n2(r3) {
+            let n3 = r3;
+            return e2 && (t2.setAttribute("href", n3), n3 = t2.href), t2.setAttribute("href", n3), { href: t2.href, protocol: t2.protocol ? t2.protocol.replace(/:$/, "") : "", host: t2.host, search: t2.search ? t2.search.replace(/^\?/, "") : "", hash: t2.hash ? t2.hash.replace(/^#/, "") : "", hostname: t2.hostname, port: t2.port, pathname: "/" === t2.pathname.charAt(0) ? t2.pathname : "/" + t2.pathname };
+          }
+          return r2 = n2(window.location.href), function(e3) {
+            const t3 = U.isString(e3) ? n2(e3) : e3;
+            return t3.protocol === r2.protocol && t3.host === r2.host;
+          };
+        }() : function() {
+          return true;
+        };
+        function Ee(e2, t2) {
+          let r2 = 0;
+          const n2 = function(e3, t3) {
+            e3 = e3 || 10;
+            const r3 = new Array(e3), n3 = new Array(e3);
+            let o2, s2 = 0, i2 = 0;
+            return t3 = void 0 !== t3 ? t3 : 1e3, function(a2) {
+              const c2 = Date.now(), u2 = n3[i2];
+              o2 || (o2 = c2), r3[s2] = a2, n3[s2] = c2;
+              let l2 = i2, d2 = 0;
+              for (; l2 !== s2; )
+                d2 += r3[l2++], l2 %= e3;
+              if (s2 = (s2 + 1) % e3, s2 === i2 && (i2 = (i2 + 1) % e3), c2 - o2 < t3)
+                return;
+              const f2 = u2 && c2 - u2;
+              return f2 ? Math.round(1e3 * d2 / f2) : void 0;
+            };
+          }(50, 250);
+          return (o2) => {
+            const s2 = o2.loaded, i2 = o2.lengthComputable ? o2.total : void 0, a2 = s2 - r2, c2 = n2(a2);
+            r2 = s2;
+            const u2 = { loaded: s2, total: i2, progress: i2 ? s2 / i2 : void 0, bytes: a2, rate: c2 || void 0, estimated: c2 && i2 && s2 <= i2 ? (i2 - s2) / c2 : void 0, event: o2 };
+            u2[t2 ? "download" : "upload"] = true, e2(u2);
+          };
+        }
+        const be = { http: null, xhr: "undefined" != typeof XMLHttpRequest && function(e2) {
+          return new Promise(function(t2, r2) {
+            let n2 = e2.data;
+            const o2 = de.from(e2.headers).normalize();
+            let s2, i2, { responseType: a2, withXSRFToken: c2 } = e2;
+            function u2() {
+              e2.cancelToken && e2.cancelToken.unsubscribe(s2), e2.signal && e2.signal.removeEventListener("abort", s2);
+            }
+            if (U.isFormData(n2)) {
+              if (te.hasStandardBrowserEnv || te.hasStandardBrowserWebWorkerEnv)
+                o2.setContentType(false);
+              else if (false !== (i2 = o2.getContentType())) {
+                const [e3, ...t3] = i2 ? i2.split(";").map((e4) => e4.trim()).filter(Boolean) : [];
+                o2.setContentType([e3 || "multipart/form-data", ...t3].join("; "));
+              }
+            }
+            let l2 = new XMLHttpRequest();
+            if (e2.auth) {
+              const t3 = e2.auth.username || "", r3 = e2.auth.password ? unescape(encodeURIComponent(e2.auth.password)) : "";
+              o2.set("Authorization", "Basic " + btoa(t3 + ":" + r3));
+            }
+            const d2 = ge(e2.baseURL, e2.url);
+            function f2() {
+              if (!l2)
+                return;
+              const n3 = de.from("getAllResponseHeaders" in l2 && l2.getAllResponseHeaders());
+              !function(e3, t3, r3) {
+                const n4 = r3.config.validateStatus;
+                r3.status && n4 && !n4(r3.status) ? t3(new _("Request failed with status code " + r3.status, [_.ERR_BAD_REQUEST, _.ERR_BAD_RESPONSE][Math.floor(r3.status / 100) - 4], r3.config, r3.request, r3)) : e3(r3);
+              }(function(e3) {
+                t2(e3), u2();
+              }, function(e3) {
+                r2(e3), u2();
+              }, { data: a2 && "text" !== a2 && "json" !== a2 ? l2.response : l2.responseText, status: l2.status, statusText: l2.statusText, headers: n3, config: e2, request: l2 }), l2 = null;
+            }
+            if (l2.open(e2.method.toUpperCase(), G(d2, e2.params, e2.paramsSerializer), true), l2.timeout = e2.timeout, "onloadend" in l2 ? l2.onloadend = f2 : l2.onreadystatechange = function() {
+              l2 && 4 === l2.readyState && (0 !== l2.status || l2.responseURL && 0 === l2.responseURL.indexOf("file:")) && setTimeout(f2);
+            }, l2.onabort = function() {
+              l2 && (r2(new _("Request aborted", _.ECONNABORTED, e2, l2)), l2 = null);
+            }, l2.onerror = function() {
+              r2(new _("Network Error", _.ERR_NETWORK, e2, l2)), l2 = null;
+            }, l2.ontimeout = function() {
+              let t3 = e2.timeout ? "timeout of " + e2.timeout + "ms exceeded" : "timeout exceeded";
+              const n3 = e2.transitional || K;
+              e2.timeoutErrorMessage && (t3 = e2.timeoutErrorMessage), r2(new _(t3, n3.clarifyTimeoutError ? _.ETIMEDOUT : _.ECONNABORTED, e2, l2)), l2 = null;
+            }, te.hasStandardBrowserEnv && (c2 && U.isFunction(c2) && (c2 = c2(e2)), c2 || false !== c2 && ye(d2))) {
+              const t3 = e2.xsrfHeaderName && e2.xsrfCookieName && me.read(e2.xsrfCookieName);
+              t3 && o2.set(e2.xsrfHeaderName, t3);
+            }
+            void 0 === n2 && o2.setContentType(null), "setRequestHeader" in l2 && U.forEach(o2.toJSON(), function(e3, t3) {
+              l2.setRequestHeader(t3, e3);
+            }), U.isUndefined(e2.withCredentials) || (l2.withCredentials = !!e2.withCredentials), a2 && "json" !== a2 && (l2.responseType = e2.responseType), "function" == typeof e2.onDownloadProgress && l2.addEventListener("progress", Ee(e2.onDownloadProgress, true)), "function" == typeof e2.onUploadProgress && l2.upload && l2.upload.addEventListener("progress", Ee(e2.onUploadProgress)), (e2.cancelToken || e2.signal) && (s2 = (t3) => {
+              l2 && (r2(!t3 || t3.type ? new he(null, e2, l2) : t3), l2.abort(), l2 = null);
+            }, e2.cancelToken && e2.cancelToken.subscribe(s2), e2.signal && (e2.signal.aborted ? s2() : e2.signal.addEventListener("abort", s2)));
+            const p2 = function(e3) {
+              const t3 = /^([-+\w]{1,25})(:?\/\/|:)/.exec(e3);
+              return t3 && t3[1] || "";
+            }(d2);
+            p2 && -1 === te.protocols.indexOf(p2) ? r2(new _("Unsupported protocol " + p2 + ":", _.ERR_BAD_REQUEST, e2)) : l2.send(n2 || null);
+          });
+        } };
+        U.forEach(be, (e2, t2) => {
+          if (e2) {
+            try {
+              Object.defineProperty(e2, "name", { value: t2 });
+            } catch (e3) {
+            }
+            Object.defineProperty(e2, "adapterName", { value: t2 });
+          }
+        });
+        const Te = (e2) => `- ${e2}`, Se = (e2) => U.isFunction(e2) || null === e2 || false === e2;
+        var Oe = (e2) => {
+          e2 = U.isArray(e2) ? e2 : [e2];
+          const { length: t2 } = e2;
+          let r2, n2;
+          const o2 = {};
+          for (let s2 = 0; s2 < t2; s2++) {
+            let t3;
+            if (r2 = e2[s2], n2 = r2, !Se(r2) && (n2 = be[(t3 = String(r2)).toLowerCase()], void 0 === n2))
+              throw new _(`Unknown adapter '${t3}'`);
+            if (n2)
+              break;
+            o2[t3 || "#" + s2] = n2;
+          }
+          if (!n2) {
+            const e3 = Object.entries(o2).map(([e4, t3]) => `adapter ${e4} ` + (false === t3 ? "is not supported by the environment" : "is not available in the build"));
+            throw new _("There is no suitable adapter to dispatch the request " + (t2 ? e3.length > 1 ? "since :\n" + e3.map(Te).join("\n") : " " + Te(e3[0]) : "as no adapter specified"), "ERR_NOT_SUPPORT");
+          }
+          return n2;
+        };
+        function ve(e2) {
+          if (e2.cancelToken && e2.cancelToken.throwIfRequested(), e2.signal && e2.signal.aborted)
+            throw new he(null, e2);
+        }
+        function Re(e2) {
+          ve(e2), e2.headers = de.from(e2.headers), e2.data = fe.call(e2, e2.transformRequest), -1 !== ["post", "put", "patch"].indexOf(e2.method) && e2.headers.setContentType("application/x-www-form-urlencoded", false);
+          return Oe(e2.adapter || oe.adapter)(e2).then(function(t2) {
+            return ve(e2), t2.data = fe.call(e2, e2.transformResponse, t2), t2.headers = de.from(t2.headers), t2;
+          }, function(t2) {
+            return pe(t2) || (ve(e2), t2 && t2.response && (t2.response.data = fe.call(e2, e2.transformResponse, t2.response), t2.response.headers = de.from(t2.response.headers))), Promise.reject(t2);
+          });
+        }
+        const Ae = (e2) => e2 instanceof de ? { ...e2 } : e2;
+        function we(e2, t2) {
+          t2 = t2 || {};
+          const r2 = {};
+          function n2(e3, t3, r3) {
+            return U.isPlainObject(e3) && U.isPlainObject(t3) ? U.merge.call({ caseless: r3 }, e3, t3) : U.isPlainObject(t3) ? U.merge({}, t3) : U.isArray(t3) ? t3.slice() : t3;
+          }
+          function o2(e3, t3, r3) {
+            return U.isUndefined(t3) ? U.isUndefined(e3) ? void 0 : n2(void 0, e3, r3) : n2(e3, t3, r3);
+          }
+          function s2(e3, t3) {
+            if (!U.isUndefined(t3))
+              return n2(void 0, t3);
+          }
+          function i2(e3, t3) {
+            return U.isUndefined(t3) ? U.isUndefined(e3) ? void 0 : n2(void 0, e3) : n2(void 0, t3);
+          }
+          function a2(r3, o3, s3) {
+            return s3 in t2 ? n2(r3, o3) : s3 in e2 ? n2(void 0, r3) : void 0;
+          }
+          const c2 = { url: s2, method: s2, data: s2, baseURL: i2, transformRequest: i2, transformResponse: i2, paramsSerializer: i2, timeout: i2, timeoutMessage: i2, withCredentials: i2, withXSRFToken: i2, adapter: i2, responseType: i2, xsrfCookieName: i2, xsrfHeaderName: i2, onUploadProgress: i2, onDownloadProgress: i2, decompress: i2, maxContentLength: i2, maxBodyLength: i2, beforeRedirect: i2, transport: i2, httpAgent: i2, httpsAgent: i2, cancelToken: i2, socketPath: i2, responseEncoding: i2, validateStatus: a2, headers: (e3, t3) => o2(Ae(e3), Ae(t3), true) };
+          return U.forEach(Object.keys(Object.assign({}, e2, t2)), function(n3) {
+            const s3 = c2[n3] || o2, i3 = s3(e2[n3], t2[n3], n3);
+            U.isUndefined(i3) && s3 !== a2 || (r2[n3] = i3);
+          }), r2;
+        }
+        const Pe = "1.6.8", Ce = {};
+        ["object", "boolean", "number", "function", "string", "symbol"].forEach((e2, t2) => {
+          Ce[e2] = function(r2) {
+            return typeof r2 === e2 || "a" + (t2 < 1 ? "n " : " ") + e2;
+          };
+        });
+        const Ie = {};
+        Ce.transitional = function(e2, t2, r2) {
+          function n2(e3, t3) {
+            return "[Axios v1.6.8] Transitional option '" + e3 + "'" + t3 + (r2 ? ". " + r2 : "");
+          }
+          return (r3, o2, s2) => {
+            if (false === e2)
+              throw new _(n2(o2, " has been removed" + (t2 ? " in " + t2 : "")), _.ERR_DEPRECATED);
+            return t2 && !Ie[o2] && (Ie[o2] = true, console.warn(n2(o2, " has been deprecated since v" + t2 + " and will be removed in the near future"))), !e2 || e2(r3, o2, s2);
+          };
+        };
+        var Ne = { assertOptions: function(e2, t2, r2) {
+          if ("object" != typeof e2)
+            throw new _("options must be an object", _.ERR_BAD_OPTION_VALUE);
+          const n2 = Object.keys(e2);
+          let o2 = n2.length;
+          for (; o2-- > 0; ) {
+            const s2 = n2[o2], i2 = t2[s2];
+            if (i2) {
+              const t3 = e2[s2], r3 = void 0 === t3 || i2(t3, s2, e2);
+              if (true !== r3)
+                throw new _("option " + s2 + " must be " + r3, _.ERR_BAD_OPTION_VALUE);
+            } else if (true !== r2)
+              throw new _("Unknown option " + s2, _.ERR_BAD_OPTION);
+          }
+        }, validators: Ce };
+        const qe = Ne.validators;
+        class xe {
+          constructor(e2) {
+            this.defaults = e2, this.interceptors = { request: new W(), response: new W() };
+          }
+          async request(e2, t2) {
+            try {
+              return await this._request(e2, t2);
+            } catch (e3) {
+              if (e3 instanceof Error) {
+                let t3;
+                Error.captureStackTrace ? Error.captureStackTrace(t3 = {}) : t3 = new Error();
+                const r2 = t3.stack ? t3.stack.replace(/^.+\n/, "") : "";
+                e3.stack ? r2 && !String(e3.stack).endsWith(r2.replace(/^.+\n.+\n/, "")) && (e3.stack += "\n" + r2) : e3.stack = r2;
+              }
+              throw e3;
+            }
+          }
+          _request(e2, t2) {
+            "string" == typeof e2 ? (t2 = t2 || {}).url = e2 : t2 = e2 || {}, t2 = we(this.defaults, t2);
+            const { transitional: r2, paramsSerializer: n2, headers: o2 } = t2;
+            void 0 !== r2 && Ne.assertOptions(r2, { silentJSONParsing: qe.transitional(qe.boolean), forcedJSONParsing: qe.transitional(qe.boolean), clarifyTimeoutError: qe.transitional(qe.boolean) }, false), null != n2 && (U.isFunction(n2) ? t2.paramsSerializer = { serialize: n2 } : Ne.assertOptions(n2, { encode: qe.function, serialize: qe.function }, true)), t2.method = (t2.method || this.defaults.method || "get").toLowerCase();
+            let s2 = o2 && U.merge(o2.common, o2[t2.method]);
+            o2 && U.forEach(["delete", "get", "head", "post", "put", "patch", "common"], (e3) => {
+              delete o2[e3];
+            }), t2.headers = de.concat(s2, o2);
+            const i2 = [];
+            let a2 = true;
+            this.interceptors.request.forEach(function(e3) {
+              "function" == typeof e3.runWhen && false === e3.runWhen(t2) || (a2 = a2 && e3.synchronous, i2.unshift(e3.fulfilled, e3.rejected));
+            });
+            const c2 = [];
+            let u2;
+            this.interceptors.response.forEach(function(e3) {
+              c2.push(e3.fulfilled, e3.rejected);
+            });
+            let l2, d2 = 0;
+            if (!a2) {
+              const e3 = [Re.bind(this), void 0];
+              for (e3.unshift.apply(e3, i2), e3.push.apply(e3, c2), l2 = e3.length, u2 = Promise.resolve(t2); d2 < l2; )
+                u2 = u2.then(e3[d2++], e3[d2++]);
+              return u2;
+            }
+            l2 = i2.length;
+            let f2 = t2;
+            for (d2 = 0; d2 < l2; ) {
+              const e3 = i2[d2++], t3 = i2[d2++];
+              try {
+                f2 = e3(f2);
+              } catch (e4) {
+                t3.call(this, e4);
+                break;
+              }
+            }
+            try {
+              u2 = Re.call(this, f2);
+            } catch (e3) {
+              return Promise.reject(e3);
+            }
+            for (d2 = 0, l2 = c2.length; d2 < l2; )
+              u2 = u2.then(c2[d2++], c2[d2++]);
+            return u2;
+          }
+          getUri(e2) {
+            return G(ge((e2 = we(this.defaults, e2)).baseURL, e2.url), e2.params, e2.paramsSerializer);
+          }
+        }
+        U.forEach(["delete", "get", "head", "options"], function(e2) {
+          xe.prototype[e2] = function(t2, r2) {
+            return this.request(we(r2 || {}, { method: e2, url: t2, data: (r2 || {}).data }));
+          };
+        }), U.forEach(["post", "put", "patch"], function(e2) {
+          function t2(t3) {
+            return function(r2, n2, o2) {
+              return this.request(we(o2 || {}, { method: e2, headers: t3 ? { "Content-Type": "multipart/form-data" } : {}, url: r2, data: n2 }));
+            };
+          }
+          xe.prototype[e2] = t2(), xe.prototype[e2 + "Form"] = t2(true);
+        });
+        var je = xe;
+        class Ue {
+          constructor(e2) {
+            if ("function" != typeof e2)
+              throw new TypeError("executor must be a function.");
+            let t2;
+            this.promise = new Promise(function(e3) {
+              t2 = e3;
+            });
+            const r2 = this;
+            this.promise.then((e3) => {
+              if (!r2._listeners)
+                return;
+              let t3 = r2._listeners.length;
+              for (; t3-- > 0; )
+                r2._listeners[t3](e3);
+              r2._listeners = null;
+            }), this.promise.then = (e3) => {
+              let t3;
+              const n2 = new Promise((e4) => {
+                r2.subscribe(e4), t3 = e4;
+              }).then(e3);
+              return n2.cancel = function() {
+                r2.unsubscribe(t3);
+              }, n2;
+            }, e2(function(e3, n2, o2) {
+              r2.reason || (r2.reason = new he(e3, n2, o2), t2(r2.reason));
+            });
+          }
+          throwIfRequested() {
+            if (this.reason)
+              throw this.reason;
+          }
+          subscribe(e2) {
+            this.reason ? e2(this.reason) : this._listeners ? this._listeners.push(e2) : this._listeners = [e2];
+          }
+          unsubscribe(e2) {
+            if (!this._listeners)
+              return;
+            const t2 = this._listeners.indexOf(e2);
+            -1 !== t2 && this._listeners.splice(t2, 1);
+          }
+          static source() {
+            let e2;
+            return { token: new Ue(function(t2) {
+              e2 = t2;
+            }), cancel: e2 };
+          }
+        }
+        var _e = Ue;
+        const Be = { Continue: 100, SwitchingProtocols: 101, Processing: 102, EarlyHints: 103, Ok: 200, Created: 201, Accepted: 202, NonAuthoritativeInformation: 203, NoContent: 204, ResetContent: 205, PartialContent: 206, MultiStatus: 207, AlreadyReported: 208, ImUsed: 226, MultipleChoices: 300, MovedPermanently: 301, Found: 302, SeeOther: 303, NotModified: 304, UseProxy: 305, Unused: 306, TemporaryRedirect: 307, PermanentRedirect: 308, BadRequest: 400, Unauthorized: 401, PaymentRequired: 402, Forbidden: 403, NotFound: 404, MethodNotAllowed: 405, NotAcceptable: 406, ProxyAuthenticationRequired: 407, RequestTimeout: 408, Conflict: 409, Gone: 410, LengthRequired: 411, PreconditionFailed: 412, PayloadTooLarge: 413, UriTooLong: 414, UnsupportedMediaType: 415, RangeNotSatisfiable: 416, ExpectationFailed: 417, ImATeapot: 418, MisdirectedRequest: 421, UnprocessableEntity: 422, Locked: 423, FailedDependency: 424, TooEarly: 425, UpgradeRequired: 426, PreconditionRequired: 428, TooManyRequests: 429, RequestHeaderFieldsTooLarge: 431, UnavailableForLegalReasons: 451, InternalServerError: 500, NotImplemented: 501, BadGateway: 502, ServiceUnavailable: 503, GatewayTimeout: 504, HttpVersionNotSupported: 505, VariantAlsoNegotiates: 506, InsufficientStorage: 507, LoopDetected: 508, NotExtended: 510, NetworkAuthenticationRequired: 511 };
+        Object.entries(Be).forEach(([e2, t2]) => {
+          Be[t2] = e2;
+        });
+        var Le = Be;
+        const De = function t2(r2) {
+          const n2 = new je(r2), o2 = e(je.prototype.request, n2);
+          return U.extend(o2, je.prototype, n2, { allOwnKeys: true }), U.extend(o2, n2, null, { allOwnKeys: true }), o2.create = function(e2) {
+            return t2(we(r2, e2));
+          }, o2;
+        }(oe);
+        De.Axios = je, De.CanceledError = he, De.CancelToken = _e, De.isCancel = pe, De.VERSION = Pe, De.toFormData = H, De.AxiosError = _, De.Cancel = De.CanceledError, De.all = function(e2) {
+          return Promise.all(e2);
+        }, De.spread = function(e2) {
+          return function(t2) {
+            return e2.apply(null, t2);
+          };
+        }, De.isAxiosError = function(e2) {
+          return U.isObject(e2) && true === e2.isAxiosError;
+        }, De.mergeConfig = we, De.AxiosHeaders = de, De.formToJSON = (e2) => re(U.isHTMLForm(e2) ? new FormData(e2) : e2), De.getAdapter = Oe, De.HttpStatusCode = Le, De.default = De;
+        let Fe = function(e2) {
+          return e2.SIGNATURE = "http://adlnet.gov/expapi/attachments/signature", e2.CERTIFICATE_OF_COMPLETION = "http://id.tincanapi.com/attachment/certificate-of-completion", e2.CONTRACT = "http://id.tincanapi.com/attachment/contract", e2.SUPPORTING_MEDIA = "http://id.tincanapi.com/attachment/supporting_media", e2;
+        }({}), ke = function(e2) {
+          return e2.ABOUT = "about", e2.AGENTS = "agents", e2.ACTIVITIES = "activities", e2.ACTIVITY_PROFILE = "activities/profile", e2.STATE = "activities/state", e2.AGENT_PROFILE = "agents/profile", e2.STATEMENT = "statements", e2;
+        }({});
+        class Me {
+          static INITIALIZED = { id: "http://adlnet.gov/expapi/verbs/initialized", display: { "en-US": "initialized" } };
+          static TERMINATED = { id: "http://adlnet.gov/expapi/verbs/terminated", display: { "en-US": "terminated" } };
+          static SUSPENDED = { id: "http://adlnet.gov/expapi/verbs/suspended", display: { "en-US": "suspended" } };
+          static RESUMED = { id: "http://adlnet.gov/expapi/verbs/resumed", display: { "en-US": "resumed" } };
+          static PASSED = { id: "http://adlnet.gov/expapi/verbs/passed", display: { "en-US": "passed" } };
+          static FAILED = { id: "http://adlnet.gov/expapi/verbs/failed", display: { "en-US": "failed" } };
+          static SCORED = { id: "http://adlnet.gov/expapi/verbs/scored", display: { "en-US": "scored" } };
+          static COMPLETED = { id: "http://adlnet.gov/expapi/verbs/completed", display: { "en-US": "completed" } };
+          static RESPONDED = { id: "http://adlnet.gov/expapi/verbs/responded", display: { "en-US": "responded" } };
+          static COMMENTED = { id: "http://adlnet.gov/expapi/verbs/commented", display: { "en-US": "commented" } };
+          static VOIDED = { id: "http://adlnet.gov/expapi/verbs/voided", display: { "en-US": "voided" } };
+          static PROGRESSED = { id: "http://adlnet.gov/expapi/verbs/progressed", display: { "en-US": "progressed" } };
+          static ANSWERED = { id: "http://adlnet.gov/expapi/verbs/answered", display: { "en-US": "answered" } };
+        }
+        const He = "\r\n";
+        function $e(e2, t2) {
+          const r2 = [], n2 = (Math.random() + " ").substring(2, 10) + (Math.random() + " ").substring(2, 10), o2 = { "Content-Type": `multipart/mixed; boundary=${n2}` };
+          r2.push(function(e3, t3) {
+            return [`--${t3}`, "Content-Type: application/json", 'Content-Disposition: form-data; name="statement"', "", JSON.stringify(e3)].join(He) + He;
+          }(e2, n2));
+          const s2 = Array.isArray(e2) ? e2.reduce((e3, t3) => e3.concat(t3.attachments), []) : e2.attachments;
+          return t2.forEach((e3, t3) => {
+            const o3 = s2[t3];
+            r2.push(function(e4, t4) {
+              return [`--${t4}`, `Content-Type: ${e4.contentType}`, "Content-Transfer-Encoding: binary", `X-Experience-API-Hash: ${e4.sha2}`].join(He) + He + He;
+            }(o3, n2)), r2.push(e3);
+          }), r2.push(`${He}--${n2}--${He}`), { header: o2, blob: new Blob(r2) };
+        }
+        function ze(e2) {
+          const t2 = {};
+          if (-1 === e2.indexOf("?"))
+            return t2;
+          let r2 = e2.substring(e2.indexOf("?"));
+          if (r2 = r2.split("#").shift(), !r2)
+            return t2;
+          return new URLSearchParams(r2).forEach((e3, r3) => {
+            try {
+              t2[r3] = JSON.parse(e3);
+            } catch {
+              t2[r3] = e3;
+            }
+            var n2;
+            "actor" === r3 && (t2.actor = (n2 = t2.actor, ["name", "mbox", "account"].forEach((e4) => {
+              Array.isArray(n2[e4]) && (n2[e4] = "account" === e4 ? { ...!!n2.account[0].accountServiceHomePage && { homePage: n2.account[0].accountServiceHomePage }, ...!!n2.account[0].accountName && { name: n2.account[0].accountName } } : n2[e4][0]);
+            }), n2));
+          }), t2;
+        }
+        const Ve = 6e4, Je = 36e5, Ge = 864e5;
+        function We(e2, t2) {
+          const r2 = t2.getTime() - e2.getTime();
+          if (r2 <= 0)
+            return "PT0S";
+          const n2 = Math.floor(r2 / Ge), o2 = r2 % Ge, s2 = Math.floor(o2 / Je), i2 = o2 % Je, a2 = Math.floor(i2 / Ve), c2 = i2 % Ve / 1e3;
+          return `P${n2 ? n2 + "D" : ""}T${s2 ? s2 + "H" : ""}${a2 ? a2 + "M" : ""}${c2 ? c2 + "S" : ""}`;
+        }
+        function Ke() {
+          if ("undefined" == typeof location)
+            return Promise.reject(new Error("Environment does not support location.search"));
+          const e2 = ze(location.search);
+          if (!e2.xAPILaunchService)
+            return Promise.reject(new Error("xAPILaunchService parameter not found in URL."));
+          const t2 = new URL(e2.xAPILaunchService);
+          return t2.pathname += `launch/${e2.xAPILaunchKey}`, De.request({ method: "POST", url: t2.toString() }).then((e3) => e3.data);
+        }
+        function Xe() {
+          if ("undefined" == typeof location)
+            throw new Error("Environment does not support location.search");
+          return ze(location.search);
+        }
+        function Ye(e2, t2) {
+          const r2 = `${e2}:${t2}`;
+          if ("undefined" != typeof window && window.btoa)
+            return `Basic ${btoa(r2)}`;
+          if ("undefined" != typeof Buffer)
+            return `Basic ${Buffer.from(r2, "binary").toString("base64")}`;
+          throw new Error("Environment does not support base64 conversion.");
+        }
+        class Qe {
+          static default = Qe;
+          static AttachmentUsages = Fe;
+          static Verbs = Me;
+          static calculateISO8601Duration = We;
+          static getSearchQueryParamsAsObject = ze;
+          static getXAPILaunchData = Ke;
+          static getTinCanLaunchData = Xe;
+          static toBasicAuth = Ye;
+          constructor(e2) {
+            const t2 = e2.version || "1.0.3";
+            var r2;
+            this.endpoint = (r2 = e2.endpoint).endsWith("/") ? r2 : `${r2}/`, this.headers = { "X-Experience-API-Version": t2, "Content-Type": "application/json", Authorization: e2.auth ? e2.auth : Ye("", "") };
+          }
+          getAxios() {
+            return De;
+          }
+          requestResource(e2) {
+            var t2;
+            const r2 = Object.assign({}, e2.queryParams);
+            null !== (t2 = e2.requestOptions) && void 0 !== t2 && t2.useCacheBuster && (r2.cachebuster = (/* @__PURE__ */ new Date()).getTime().toString());
+            const n2 = this.generateURL(e2.resource, r2);
+            return this.requestURL(n2, e2.requestConfig);
+          }
+          requestURL(e2, t2) {
+            return De.request({ method: (null == t2 ? void 0 : t2.method) || "GET", url: e2, headers: { ...this.headers, ...null == t2 ? void 0 : t2.headers }, data: null == t2 ? void 0 : t2.data }).then((e3) => {
+              const t3 = e3.headers["content-type"];
+              return e3.data && t3 && -1 !== t3.indexOf("multipart/mixed") && (e3.data = function(e4) {
+                const t4 = e4.trim().split(He)[0].trim(), r2 = e4.split(t4).map((e5) => e5.trim()).filter((e5) => "" !== e5 && "--" !== e5), n2 = [];
+                for (let e5 = 0; e5 < r2.length; e5++) {
+                  const t5 = {}, o2 = r2[e5].split(He);
+                  for (let e6 = 0; e6 < o2.length - 2; e6++) {
+                    const r3 = o2[e6].split(":");
+                    t5[r3[0]] = r3[1];
+                  }
+                  let s2 = o2[o2.length - 1];
+                  t5["Content-Type"].indexOf("application/json") > -1 && (s2 = JSON.parse(s2)), n2.push(s2);
+                }
+                return n2;
+              }(e3.data)), e3;
+            });
+          }
+          generateURL(e2, t2) {
+            const r2 = Object.keys(t2).map((e3) => {
+              let r3 = "agent" === e3 ? JSON.stringify(t2[e3]) : t2[e3];
+              return r3 = encodeURIComponent(r3), `${e3}=${r3}`;
+            }).join("&");
+            return `${this.endpoint}${e2}${r2 ? "?" + r2 : ""}`;
+          }
+        }
+        return Qe.prototype.getAbout = function(e2) {
+          return this.requestResource({ resource: ke.ABOUT, requestOptions: { useCacheBuster: null == e2 ? void 0 : e2.useCacheBuster } });
+        }, Qe.prototype.getActivity = function(e2) {
+          return this.requestResource({ resource: ke.ACTIVITIES, queryParams: { activityId: e2.activityId }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getAgent = function(e2) {
+          return this.requestResource({ resource: ke.AGENTS, queryParams: { agent: e2.agent }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.createActivityProfile = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2[e2.matchHeader] = e2.etag), this.requestResource({ resource: ke.ACTIVITY_PROFILE, queryParams: { activityId: e2.activityId, profileId: e2.profileId }, requestConfig: { method: "POST", data: e2.profile, headers: t2 } });
+        }, Qe.prototype.setActivityProfile = function(e2) {
+          const t2 = {};
+          return t2[e2.matchHeader] = e2.etag, e2.contentType && (t2["Content-Type"] = e2.contentType), this.requestResource({ resource: ke.ACTIVITY_PROFILE, queryParams: { activityId: e2.activityId, profileId: e2.profileId }, requestConfig: { method: "PUT", data: e2.profile, headers: t2 } });
+        }, Qe.prototype.getActivityProfiles = function(e2) {
+          return this.requestResource({ resource: ke.ACTIVITY_PROFILE, queryParams: { activityId: e2.activityId, ...!!e2.since && { since: e2.since } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getActivityProfile = function(e2) {
+          return this.requestResource({ resource: ke.ACTIVITY_PROFILE, queryParams: { activityId: e2.activityId, profileId: e2.profileId }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.deleteActivityProfile = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2["If-Match"] = e2.etag), this.requestResource({ resource: ke.ACTIVITY_PROFILE, queryParams: { activityId: e2.activityId, profileId: e2.profileId }, requestConfig: { method: "DELETE", headers: t2 } });
+        }, Qe.prototype.createAgentProfile = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2[e2.matchHeader] = e2.etag), this.requestResource({ resource: ke.AGENT_PROFILE, queryParams: { agent: e2.agent, profileId: e2.profileId }, requestConfig: { method: "POST", data: e2.profile, headers: t2 } });
+        }, Qe.prototype.setAgentProfile = function(e2) {
+          const t2 = {};
+          return t2[e2.matchHeader] = e2.etag, e2.contentType && (t2["Content-Type"] = e2.contentType), this.requestResource({ resource: ke.AGENT_PROFILE, queryParams: { agent: e2.agent, profileId: e2.profileId }, requestConfig: { method: "PUT", data: e2.profile, headers: t2 } });
+        }, Qe.prototype.getAgentProfiles = function(e2) {
+          return this.requestResource({ resource: ke.AGENT_PROFILE, queryParams: { agent: e2.agent, ...!!e2.since && { since: e2.since } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getAgentProfile = function(e2) {
+          return this.requestResource({ resource: ke.AGENT_PROFILE, queryParams: { agent: e2.agent, profileId: e2.profileId }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.deleteAgentProfile = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2["If-Match"] = e2.etag), this.requestResource({ resource: ke.AGENT_PROFILE, queryParams: { agent: e2.agent, profileId: e2.profileId }, requestConfig: { method: "DELETE", headers: t2 } });
+        }, Qe.prototype.createState = function(e2) {
+          const t2 = {};
+          return e2.etag && e2.matchHeader && (t2[e2.matchHeader] = e2.etag), this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, stateId: e2.stateId, ...!!e2.registration && { registration: e2.registration } }, requestConfig: { method: "POST", data: e2.state, headers: t2 } });
+        }, Qe.prototype.setState = function(e2) {
+          const t2 = {};
+          return e2.etag && e2.matchHeader && (t2[e2.matchHeader] = e2.etag), e2.contentType && (t2["Content-Type"] = e2.contentType), this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, stateId: e2.stateId, ...!!e2.registration && { registration: e2.registration } }, requestConfig: { method: "PUT", data: e2.state, headers: t2 } });
+        }, Qe.prototype.getStates = function(e2) {
+          return this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, ...!!e2.registration && { registration: e2.registration }, ...!!e2.since && { since: e2.since } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getState = function(e2) {
+          return this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, stateId: e2.stateId, ...!!e2.registration && { registration: e2.registration } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.deleteState = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2["If-Match"] = e2.etag), this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, stateId: e2.stateId, ...!!e2.registration && { registration: e2.registration } }, requestConfig: { method: "DELETE", headers: t2 } });
+        }, Qe.prototype.deleteStates = function(e2) {
+          const t2 = {};
+          return e2.etag && (t2["If-Match"] = e2.etag), this.requestResource({ resource: ke.STATE, queryParams: { agent: e2.agent, activityId: e2.activityId, ...!!e2.registration && { registration: e2.registration } }, requestConfig: { method: "DELETE", headers: t2 } });
+        }, Qe.prototype.getStatement = function(e2) {
+          return this.requestResource({ resource: ke.STATEMENT, queryParams: { statementId: e2.statementId, ...!!e2.attachments && { attachments: e2.attachments }, ...!!e2.format && { format: e2.format } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getVoidedStatement = function(e2) {
+          return this.requestResource({ resource: ke.STATEMENT, queryParams: { voidedStatementId: e2.voidedStatementId, ...!!e2.attachments && { attachments: e2.attachments }, ...!!e2.format && { format: e2.format } }, requestOptions: { useCacheBuster: e2.useCacheBuster } });
+        }, Qe.prototype.getStatements = function(e2) {
+          return this.requestResource({ resource: ke.STATEMENT, queryParams: { ...!(null == e2 || !e2.activity) && { activity: e2.activity }, ...!(null == e2 || !e2.agent) && { agent: e2.agent }, ...!(null == e2 || !e2.ascending) && { ascending: e2.ascending }, ...!(null == e2 || !e2.attachments) && { attachments: e2.attachments }, ...!(null == e2 || !e2.format) && { format: e2.format }, ...!(null == e2 || !e2.limit) && { limit: e2.limit }, ...!(null == e2 || !e2.registration) && { registration: e2.registration }, ...!(null == e2 || !e2.related_activities) && { related_activities: e2.related_activities }, ...!(null == e2 || !e2.related_agents) && { related_agents: e2.related_agents }, ...!(null == e2 || !e2.since) && { since: e2.since }, ...!(null == e2 || !e2.until) && { until: e2.until }, ...!(null == e2 || !e2.verb) && { verb: e2.verb } }, requestOptions: { useCacheBuster: null == e2 ? void 0 : e2.useCacheBuster } });
+        }, Qe.prototype.getMoreStatements = function(e2) {
+          const t2 = new URL(this.endpoint), r2 = `${t2.protocol}//${t2.host}${e2.more}`;
+          return this.requestURL(r2);
+        }, Qe.prototype.sendStatement = function(e2) {
+          var t2;
+          if (null === (t2 = e2.attachments) || void 0 === t2 ? void 0 : t2.length) {
+            const t3 = $e(e2.statement, e2.attachments);
+            return this.requestResource({ resource: ke.STATEMENT, requestConfig: { method: "POST", headers: t3.header, data: t3.blob } });
+          }
+          return this.requestResource({ resource: ke.STATEMENT, requestConfig: { method: "POST", data: e2.statement } });
+        }, Qe.prototype.sendStatements = function(e2) {
+          var t2;
+          if (null === (t2 = e2.attachments) || void 0 === t2 ? void 0 : t2.length) {
+            const t3 = $e(e2.statements, e2.attachments);
+            return this.requestResource({ resource: ke.STATEMENT, requestConfig: { method: "POST", headers: t3.header, data: t3.blob } });
+          }
+          return this.requestResource({ resource: ke.STATEMENT, requestConfig: { method: "POST", data: e2.statements } });
+        }, Qe.prototype.voidStatement = function(e2) {
+          const t2 = { actor: e2.actor, verb: Me.VOIDED, object: { objectType: "StatementRef", id: e2.statementId } };
+          return this.sendStatement({ statement: t2 });
+        }, Qe.prototype.voidStatements = function(e2) {
+          const t2 = e2.statementIds.map((t3) => ({ actor: e2.actor, verb: Me.VOIDED, object: { objectType: "StatementRef", id: t3 } }));
+          return this.sendStatements({ statements: t2 });
+        }, Qe;
+      });
+    }
+  });
+
+  // src/module2/lesson1.ts
+  init_live_reload();
+
+  // src/utils/xapiUtiils.ts
+  init_live_reload();
+  var import_xapi = __toESM(require_XAPI_umd(), 1);
+
+  // src/utils/attributes.ts
+  init_live_reload();
+
+  // src/utils/getModuleLessonKey.ts
+  init_live_reload();
+  var getModuleLessonKey = () => {
+    const url = new URL(window.location.href);
+    const pathname = url.pathname;
+    const moduleLessonKeyWithHtml = pathname.split("/").find((segment) => segment.startsWith("module-") && segment.includes("lesson-"));
+    if (!moduleLessonKeyWithHtml) {
+      console.error("Module lesson key not found in the URL");
+      return null;
+    }
+    const moduleLessonKey = moduleLessonKeyWithHtml.replace(".html", "");
+    return moduleLessonKey;
+  };
+
+  // src/utils/initialState.ts
+  init_live_reload();
+  var initialState = {
+    content: {
+      "module-1-lesson-1": {
+        completed: false,
+        started: false
+      },
+      "module-1-lesson-2": {
+        completed: false,
+        started: false
+      },
+      "module-2-lesson-1": {
+        completed: false,
+        started: false
+      }
+    }
+  };
+
+  // src/utils/xapiUtiils.ts
+  var xapi;
+  var agent;
+  var BASE_URL = `https://starbucks.com/starbucks-brand-training/`;
+  var stateId = `${BASE_URL}/states/`;
+  var initializeXAPI = async () => {
+    const tinCanLaunchData = import_xapi.default.getTinCanLaunchData();
+    const endpoint = tinCanLaunchData?.endpoint;
+    const auth = tinCanLaunchData?.auth;
+    console.log({ tinCanLaunchData });
+    if (!endpoint || !auth) {
+      console.error("Missing endpoint or auth");
+      alert("Missing endpoint or auth");
+      return;
+    }
+    xapi = new import_xapi.default({
+      endpoint,
+      auth
+    });
+    const actor = tinCanLaunchData.actor;
+    if (!actor) {
+      console.error("Missing actor");
+      alert("Missing actor");
+      return;
+    }
+    stateId += actor.account.name.split("|")[1];
+    await initializeState(actor);
+  };
+  var initializeState = async (actor) => {
+    console.log("initializeState");
+    agent = {
+      objectType: "Agent",
+      name: actor.name,
+      mbox: `mailto:${actor.account.name.split("|")[1]}`
+    };
+    const activityId = `${BASE_URL}/activities/${getModuleLessonKey()}`;
+    try {
+      const retrievedState = await xapi.getState({
+        agent,
+        activityId,
+        stateId
+      });
+      if (retrievedState.data) {
+        console.log("state already exists");
+        console.log({ retrievedState });
+        return;
+      }
+    } catch (error) {
+      console.log("Error retrieving state:", error);
+      const err = error;
+      if (err.response && err.response.status === 404) {
+        console.log("State not found, proceeding to create a new state");
+      } else {
+        console.error("Error retrieving state:", error);
+        return;
+      }
+    }
+    try {
+      const createdState = await xapi.createState({
+        agent,
+        activityId,
+        stateId,
+        state: { ...initialState }
+      });
+      console.log("state initialized");
+      console.log({ createdState });
+    } catch (error) {
+      console.error("Error creating state:", error);
+    }
+  };
+  var sendStatement = async (statement) => {
+    try {
+      const response = await xapi.sendStatement({ statement });
+      console.log("Statement sent successfully:", response);
+    } catch (error) {
+      console.error("Error sending statement:", error);
+    }
+  };
+  var startLesson = async () => {
+    console.log("startLesson");
+    const lessonKey = getModuleLessonKey();
+    console.log({ lessonKey });
+    if (!lessonKey) {
+      console.error("Lesson key not found");
+      return;
+    }
+    const activityId = `${BASE_URL}/activities/${lessonKey}`;
+    const retrievedState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ retrievedState });
+    const started = retrievedState.data.content[lessonKey]?.started;
+    console.log({ started });
+    if (started) {
+      console.log("Lesson already started");
+      return;
+    }
+    retrievedState.data.content[lessonKey].started = true;
+    try {
+      await xapi.setState({
+        agent,
+        activityId,
+        stateId,
+        state: { ...retrievedState.data }
+      });
+      console.log("State updated successfully");
+    } catch (error) {
+      console.error("Error updating state:", error);
+      return;
+    }
+    const statement = {
+      actor: agent,
+      verb: {
+        id: "http://adlnet.gov/expapi/verbs/launched",
+        display: {
+          "en-US": "launched"
+        }
+      },
+      object: {
+        id: activityId,
+        definition: {
+          name: {
+            "en-US": lessonKey
+          }
+        }
+      },
+      timestamp: (/* @__PURE__ */ new Date()).toISOString()
+    };
+    await sendStatement(statement);
+    const newState = await xapi.getState({
+      agent,
+      activityId,
+      stateId
+    });
+    console.log({ newState });
+  };
+
+  // src/module2/lesson1.ts
+  document.addEventListener("DOMContentLoaded", init);
+  async function init() {
+    initializeXAPI();
+    await startLesson();
+  }
+})();
+//# sourceMappingURL=lesson1.js.map

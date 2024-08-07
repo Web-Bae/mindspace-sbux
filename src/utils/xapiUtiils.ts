@@ -4,42 +4,53 @@ import { ATTRIBUTES } from './attributes';
 import { getModuleLessonKey } from './getModuleLessonKey';
 import { initialState, type StateType } from './initialState';
 
+type ExtendedActor = {
+  objectType: 'Agent';
+  name: string;
+  account: {
+    homePage: string;
+    name: string;
+  };
+};
+
 let xapi: XAPI;
 let agent: Agent;
 // let state: StateType | null = null;
 
-const activityId = 'https://example.com/activities/test-activity4';
-const stateId = `${activityId}/states/myStateId4`;
+const BASE_URL = `https://starbucks.com/starbucks-brand-training/`;
+let stateId = `${BASE_URL}/states/`;
 
 // Function to initialize xAPI
 export const initializeXAPI = async () => {
-  // get query params from URL
-  const urlParams = new URLSearchParams(window.location.search);
-  const appId = urlParams.get('appId');
-  const secretKey = urlParams.get('key');
+  const tinCanLaunchData = XAPI.getTinCanLaunchData();
 
-  if (!appId || !secretKey) {
-    console.error('Missing appId or secretKey query param');
-    alert('Missing appId or secretKey query param');
+  const endpoint = tinCanLaunchData?.endpoint;
+  const auth = tinCanLaunchData?.auth;
+
+  console.log({ tinCanLaunchData });
+
+  if (!endpoint || !auth) {
+    console.error('Missing endpoint or auth');
+    alert('Missing endpoint or auth');
     return;
   }
 
-  const endpoint = `https://cloud.scorm.com/tc/${appId}`;
-  const username = appId;
-  const password = secretKey;
-  const auth = XAPI.toBasicAuth(username, password);
-
   xapi = new XAPI({
-    endpoint: endpoint,
-    auth: auth,
+    endpoint,
+    auth,
   });
 
-  const about = await xapi.getAbout();
+  const actor = tinCanLaunchData.actor as ExtendedActor;
 
-  console.log('xapi initialized');
-  console.log({ about });
+  if (!actor) {
+    console.error('Missing actor');
+    alert('Missing actor');
+    return;
+  }
 
-  await initializeState();
+  stateId += actor.account.name.split('|')[1];
+
+  await initializeState(actor);
 };
 
 /**
@@ -47,17 +58,19 @@ export const initializeXAPI = async () => {
  * If the state already exists, it will not be re-initialized
  * If the state does not exist, it will be created
  */
-const initializeState = async () => {
+const initializeState = async (actor: ExtendedActor) => {
   console.log('initializeState');
   agent = {
     objectType: 'Agent',
-    name: '<name>',
-    mbox: 'mailto:testagent2@test.com',
+    name: actor.name,
+    mbox: `mailto:${actor.account.name.split('|')[1]}`,
   };
+
+  const activityId = `${BASE_URL}/activities/${getModuleLessonKey()}`;
 
   try {
     const retrievedState = (await xapi.getState({
-      agent: agent,
+      agent,
       activityId,
       stateId,
     })) as unknown as { data: StateType }; // Cast to match the expected type
@@ -111,6 +124,14 @@ const sendStatement = async (statement: Statement) => {
 export const startLesson = async () => {
   console.log('startLesson');
   const lessonKey = getModuleLessonKey();
+  console.log({ lessonKey });
+
+  if (!lessonKey) {
+    console.error('Lesson key not found');
+    return;
+  }
+
+  const activityId = `${BASE_URL}/activities/${lessonKey}`;
 
   const retrievedState = (await xapi.getState({
     agent: agent,
@@ -153,7 +174,7 @@ export const startLesson = async () => {
       },
     },
     object: {
-      id: `http://example.com/activities/${lessonKey}`,
+      id: activityId,
       definition: {
         name: {
           'en-US': lessonKey,
@@ -179,6 +200,13 @@ export const startLesson = async () => {
 export const completeLesson = async () => {
   console.log('completeLesson');
   const lessonKey = getModuleLessonKey();
+
+  if (!lessonKey) {
+    console.error('Lesson key not found');
+    return;
+  }
+
+  const activityId = `${BASE_URL}/activities/${lessonKey}`;
 
   const retrievedState = (await xapi.getState({
     agent: agent,
@@ -221,7 +249,7 @@ export const completeLesson = async () => {
       },
     },
     object: {
-      id: `http://example.com/activities/${lessonKey}`,
+      id: activityId,
       definition: {
         name: {
           'en-US': lessonKey,

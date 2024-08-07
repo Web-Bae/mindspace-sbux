@@ -195,13 +195,13 @@ function createDraggables() {
   });
 }
 
-function toggleScroll() {
-  const body = document.querySelector('body');
-  const { overflow } = body.style;
-  gsap.set(body, {
-    overflow: overflow === 'hidden' ? 'auto' : 'hidden',
-  });
-}
+// function toggleScroll() {
+//   const body = document.querySelector('body');
+//   const { overflow } = body.style;
+//   gsap.set(body, {
+//     overflow: overflow === 'hidden' ? 'auto' : 'hidden',
+//   });
+// }
 
 /*
 $('[rpa3="plate-section"]').each(function (index, element) {
