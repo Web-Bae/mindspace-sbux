@@ -11,10 +11,10 @@ ScrollTrigger.create({
   start: 'top top+=1px',
   onEnter: createPlatesAnimation,
   once: true,
-  markers: true,
+  // markers: true,
 });
 function createPlatesAnimation() {
-  toggleScroll();
+  // toggleScroll();
   const state = Flip.getState(rpa3Images);
 
   rpa3Images.forEach((image, index) => {
@@ -146,7 +146,7 @@ function createDraggables() {
               hiddenSections.forEach((section) => {
                 section.removeAttribute('rpa3');
               });
-              toggleScroll();
+              // toggleScroll();
             }
 
             break;
