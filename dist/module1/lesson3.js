@@ -1,0 +1,1 @@
+"use strict";(()=>{document.addEventListener("DOMContentLoaded",e);function e(){let o=document.querySelector('[rpa1="finish"]');o.style.display="none"}window.SuperformAPI=window.SuperformAPI||[];window.SuperformAPI.push(({getForm:o})=>{o("rpa1").onFormSubmit(r=>{console.log("submit");let n=document.querySelector('[rpa1="finish"]');n.style.display="block"})});})();

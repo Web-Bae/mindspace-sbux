@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../bin/live-reload.js", "../../src/module1/lesson3.js"],
+  "sourcesContent": ["new EventSource(`${SERVE_ORIGIN}/esbuild`).addEventListener('change', () => location.reload());\n", "document.addEventListener('DOMContentLoaded', init);\n\nfunction init() {\n  const finishEl = document.querySelector('[rpa1=\"finish\"]');\n  finishEl.style.display = 'none';\n}\n\nwindow.SuperformAPI = window.SuperformAPI || [];\n// Subscribe to listen when Superform is ready\nwindow.SuperformAPI.push(({ getForm }) => {\n  const kc1Form = getForm('rpa1');\n\n  kc1Form.onFormSubmit((params) => {\n    console.log('submit');\n    const finishEl = document.querySelector('[rpa1=\"finish\"]');\n\n    finishEl.style.display = 'block';\n  });\n});\n"],
+  "mappings": ";;;AAAA,MAAI,YAAY,GAAG,uBAAY,UAAU,EAAE,iBAAiB,UAAU,MAAM,SAAS,OAAO,CAAC;;;ACA7F,WAAS,iBAAiB,oBAAoB,IAAI;AAElD,WAAS,OAAO;AACd,UAAM,WAAW,SAAS,cAAc,iBAAiB;AACzD,aAAS,MAAM,UAAU;AAAA,EAC3B;AAEA,SAAO,eAAe,OAAO,gBAAgB,CAAC;AAE9C,SAAO,aAAa,KAAK,CAAC,EAAE,QAAQ,MAAM;AACxC,UAAM,UAAU,QAAQ,MAAM;AAE9B,YAAQ,aAAa,CAAC,WAAW;AAC/B,cAAQ,IAAI,QAAQ;AACpB,YAAM,WAAW,SAAS,cAAc,iBAAiB;AAEzD,eAAS,MAAM,UAAU;AAAA,IAC3B,CAAC;AAAA,EACH,CAAC;",
+  "names": []
+}
