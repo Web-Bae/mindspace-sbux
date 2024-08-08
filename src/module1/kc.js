@@ -12,7 +12,7 @@ initPage();
 window.SuperformAPI = window.SuperformAPI || [];
 // Subscribe to listen when Superform is ready
 window.SuperformAPI.push(({ getForm }) => {
-  const kc1Form = getForm('kc-1');
+  const kc1Form = getForm('kc');
 
   kc1Form.onFormSubmit((params) => {
     console.log('submit');
