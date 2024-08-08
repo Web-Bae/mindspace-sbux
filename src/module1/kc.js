@@ -1,8 +1,11 @@
 const finishElement = document.querySelector('[kc-element="finish"]');
 const successLayout = document.querySelector('[kc-element="success"]');
 const failLayout = document.querySelector('[kc-element="fail"]');
+const steps = document.querySelectorAll('[sf-step]');
 
-const NUM_QUESTIONS = 6;
+const NUM_QUESTIONS = steps.length;
+
+console.log({ NUM_QUESTIONS });
 
 initPage();
 
